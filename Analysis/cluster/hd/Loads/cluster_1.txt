@@ -1,0 +1,104 @@
+###############################################################
+# Settings:
+# de.lmu.ifi.dbs.elki.workflow.InputStep
+# -db StaticArrayDatabase
+# 
+# de.lmu.ifi.dbs.elki.database.StaticArrayDatabase
+# -dbc FileBasedDatabaseConnection
+# 
+# de.lmu.ifi.dbs.elki.datasource.FileBasedDatabaseConnection
+# -dbc.in /Users/BOX/Desktop/OS/proj/z/Analysis/cluster/hd/Loads.csv
+# -dbc.parser DoubleVectorLabelParser
+# 
+# de.lmu.ifi.dbs.elki.datasource.parser.DoubleVectorLabelParser
+# -parser.colsep \s+
+# -parser.quote "
+# -parser.labelIndices [unset]
+# 
+# de.lmu.ifi.dbs.elki.datasource.FileBasedDatabaseConnection
+# -dbc.filter [unset]
+# 
+# de.lmu.ifi.dbs.elki.database.StaticArrayDatabase
+# -db.index [unset]
+# 
+# de.lmu.ifi.dbs.elki.workflow.AlgorithmStep
+# -algorithm clustering.EM
+# 
+# de.lmu.ifi.dbs.elki.algorithm.clustering.EM
+# -em.k 3
+# -em.delta 0.0
+# -em.seed [unset]
+# 
+# de.lmu.ifi.dbs.elki.workflow.EvaluationStep
+# -evaluator [unset]
+###############################################################
+# Cluster: Cluster 1
+# Serialization class: de.lmu.ifi.dbs.elki.data.model.EMModel
+# Cluster Mean: 66.78665230711643 68.29337290624747
+# Mean: 66.78665230711643 68.29337290624747
+# Covariance Matrix: [
+#  [ 8.54832043, 8.17662013 ]
+#  [ 8.17662013, 9.22760031 ]
+# ]
+ID=1 74.0 77.0 t01_SEC_0
+ID=2 74.0 77.0 t01_SEC_30
+ID=3 73.0 76.0 t01_SEC_60
+ID=4 73.0 75.0 t01_SEC_90
+ID=5 72.0 73.0 t01_SEC_120
+ID=6 72.0 72.0 t01_SEC_150
+ID=7 72.0 72.0 t01_SEC_180
+ID=8 72.0 73.0 t01_SEC_210
+ID=9 70.0 71.0 t01_SEC_240
+ID=10 70.0 69.0 t01_SEC_270
+ID=11 70.0 70.0 t01_SEC_300
+ID=12 70.0 70.0 t01_SEC_330
+ID=13 69.0 71.0 t01_SEC_360
+ID=14 68.0 70.0 t01_SEC_390
+ID=20 67.0 69.0 t01_SEC_570
+ID=23 68.0 68.0 t01_SEC_660
+ID=22 68.0 68.0 t01_SEC_630
+ID=25 68.0 70.0 t01_SEC_720
+ID=24 68.0 68.0 t01_SEC_690
+ID=27 69.0 71.0 t01_SEC_780
+ID=26 69.0 70.0 t01_SEC_750
+ID=29 69.0 70.0 t01_SEC_840
+ID=28 69.0 69.0 t01_SEC_810
+ID=31 70.0 70.0 t01_SEC_900
+ID=30 70.0 71.0 t01_SEC_870
+ID=305 62.0 62.0 t03_SEC_2760
+ID=34 70.0 70.0 t01_SEC_990
+ID=35 69.0 72.0 t01_SEC_1020
+ID=32 70.0 71.0 t01_SEC_930
+ID=33 70.0 70.0 t01_SEC_960
+ID=38 69.0 72.0 t01_SEC_1110
+ID=39 69.0 72.0 t01_SEC_1140
+ID=36 69.0 71.0 t01_SEC_1050
+ID=37 69.0 72.0 t01_SEC_1080
+ID=42 68.0 71.0 t01_SEC_1230
+ID=43 68.0 70.0 t01_SEC_1260
+ID=40 69.0 72.0 t01_SEC_1170
+ID=44 68.0 69.0 t01_SEC_1290
+ID=45 67.0 70.0 t01_SEC_1320
+ID=289 62.0 64.0 t03_SEC_2280
+ID=290 62.0 64.0 t03_SEC_2310
+ID=184 67.0 69.0 t02_SEC_2310
+ID=291 61.0 64.0 t03_SEC_2340
+ID=292 61.0 64.0 t03_SEC_2370
+ID=294 62.0 62.0 t03_SEC_2430
+ID=295 62.0 64.0 t03_SEC_2460
+ID=296 62.0 64.0 t03_SEC_2490
+ID=297 62.0 65.0 t03_SEC_2520
+ID=179 68.0 69.0 t02_SEC_2160
+ID=298 62.0 65.0 t03_SEC_2550
+ID=176 67.0 69.0 t02_SEC_2070
+ID=177 67.0 70.0 t02_SEC_2100
+ID=180 68.0 71.0 t02_SEC_2190
+ID=181 68.0 71.0 t02_SEC_2220
+ID=209 68.0 69.0 t02_SEC_3060
+ID=210 68.0 69.0 t02_SEC_3090
+ID=102 68.0 68.0 t01_SEC_3030
+ID=103 68.0 69.0 t01_SEC_3060
+ID=99 67.0 69.0 t01_SEC_2940
+ID=106 67.0 69.0 t01_SEC_3150
+ID=104 68.0 70.0 t01_SEC_3090
+###############################################################

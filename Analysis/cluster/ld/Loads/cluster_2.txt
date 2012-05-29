@@ -1,0 +1,74 @@
+###############################################################
+# Settings:
+# de.lmu.ifi.dbs.elki.workflow.InputStep
+# -db StaticArrayDatabase
+# 
+# de.lmu.ifi.dbs.elki.database.StaticArrayDatabase
+# -dbc FileBasedDatabaseConnection
+# 
+# de.lmu.ifi.dbs.elki.datasource.FileBasedDatabaseConnection
+# -dbc.in /Users/BOX/Desktop/OS/proj/z/Analysis/cluster/ld/Loads.csv
+# -dbc.parser DoubleVectorLabelParser
+# 
+# de.lmu.ifi.dbs.elki.datasource.parser.DoubleVectorLabelParser
+# -parser.colsep \s+
+# -parser.quote "
+# -parser.labelIndices [unset]
+# 
+# de.lmu.ifi.dbs.elki.datasource.FileBasedDatabaseConnection
+# -dbc.filter [unset]
+# 
+# de.lmu.ifi.dbs.elki.database.StaticArrayDatabase
+# -db.index [unset]
+# 
+# de.lmu.ifi.dbs.elki.workflow.AlgorithmStep
+# -algorithm clustering.EM
+# 
+# de.lmu.ifi.dbs.elki.algorithm.clustering.EM
+# -em.k 3
+# -em.delta 0.0
+# -em.seed [unset]
+# 
+# de.lmu.ifi.dbs.elki.workflow.EvaluationStep
+# -evaluator [unset]
+###############################################################
+# Cluster: Cluster 2
+# Serialization class: de.lmu.ifi.dbs.elki.data.model.EMModel
+# Cluster Mean: 63.24080246878645 68.25845808355645 66.6516322843272
+# Mean: 63.24080246878645 68.25845808355645 66.6516322843272
+# Covariance Matrix: [
+#  [  0.63492428, -0.15185382,  0.32881883 ]
+#  [ -0.15185382,  0.66547924, -0.42997347 ]
+#  [  0.32881883, -0.42997347,  1.02698775 ]
+# ]
+ID=1 62.0 69.0 65.0 t01_SEC_0
+ID=2 62.0 69.0 65.0 t01_SEC_30
+ID=3 63.0 69.0 67.0 t01_SEC_60
+ID=4 63.0 69.0 66.0 t01_SEC_90
+ID=5 62.0 69.0 66.0 t01_SEC_120
+ID=6 62.0 69.0 67.0 t01_SEC_150
+ID=7 62.0 68.0 66.0 t01_SEC_180
+ID=8 62.0 68.0 66.0 t01_SEC_210
+ID=9 63.0 68.0 65.0 t01_SEC_240
+ID=10 63.0 68.0 66.0 t01_SEC_270
+ID=11 64.0 69.0 66.0 t01_SEC_300
+ID=12 64.0 69.0 67.0 t01_SEC_330
+ID=13 65.0 69.0 67.0 t01_SEC_360
+ID=15 64.0 68.0 68.0 t01_SEC_420
+ID=24 63.0 68.0 67.0 t02_SEC_150
+ID=27 63.0 69.0 65.0 t02_SEC_240
+ID=26 63.0 69.0 67.0 t02_SEC_210
+ID=29 64.0 69.0 66.0 t02_SEC_300
+ID=28 64.0 69.0 65.0 t02_SEC_270
+ID=31 64.0 68.0 67.0 t02_SEC_360
+ID=30 64.0 68.0 67.0 t02_SEC_330
+ID=32 63.0 69.0 67.0 t02_SEC_390
+ID=33 63.0 69.0 67.0 t02_SEC_420
+ID=42 64.0 67.0 68.0 t03_SEC_150
+ID=43 64.0 67.0 68.0 t03_SEC_180
+ID=40 64.0 67.0 67.0 t03_SEC_90
+ID=41 64.0 67.0 68.0 t03_SEC_120
+ID=54 63.0 67.0 66.0 t03_SEC_510
+ID=53 63.0 67.0 68.0 t03_SEC_480
+ID=52 64.0 67.0 68.0 t03_SEC_450
+###############################################################

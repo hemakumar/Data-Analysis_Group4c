@@ -1,0 +1,53 @@
+###############################################################
+# Settings:
+# de.lmu.ifi.dbs.elki.workflow.InputStep
+# -db StaticArrayDatabase
+# 
+# de.lmu.ifi.dbs.elki.database.StaticArrayDatabase
+# -dbc FileBasedDatabaseConnection
+# 
+# de.lmu.ifi.dbs.elki.datasource.FileBasedDatabaseConnection
+# -dbc.in /Users/BOX/Desktop/OS/proj/z/Analysis/cluster/ld/KW.csv
+# -dbc.parser DoubleVectorLabelParser
+# 
+# de.lmu.ifi.dbs.elki.datasource.parser.DoubleVectorLabelParser
+# -parser.colsep \s+
+# -parser.quote "
+# -parser.labelIndices [unset]
+# 
+# de.lmu.ifi.dbs.elki.datasource.FileBasedDatabaseConnection
+# -dbc.filter [unset]
+# 
+# de.lmu.ifi.dbs.elki.database.StaticArrayDatabase
+# -db.index [unset]
+# 
+# de.lmu.ifi.dbs.elki.workflow.AlgorithmStep
+# -algorithm clustering.EM
+# 
+# de.lmu.ifi.dbs.elki.algorithm.clustering.EM
+# -em.k 3
+# -em.delta 0.0
+# -em.seed [unset]
+# 
+# de.lmu.ifi.dbs.elki.workflow.EvaluationStep
+# -evaluator [unset]
+###############################################################
+# Cluster: Cluster 0
+# Serialization class: de.lmu.ifi.dbs.elki.data.model.EMModel
+# Cluster Mean: 161.44000000000003 170.82888888888888 214.06666666666663
+# Mean: 161.44000000000003 170.82888888888888 214.06666666666663
+# Covariance Matrix: [
+#  [  0.00000000, -0.00000000, -0.00000000 ]
+#  [ -0.00000000,  1.06303210, -0.51161481 ]
+#  [ -0.00000000, -0.51161481, 11.95062222 ]
+# ]
+ID=17 161.44 171.38 209.03 t01_SEC_480
+ID=16 161.44 171.38 210.62 t01_SEC_450
+ID=19 161.44 171.38 213.8 t02_SEC_0
+ID=18 161.44 171.38 214.6 t01_SEC_510
+ID=21 161.44 171.38 215.39 t02_SEC_60
+ID=20 161.44 171.38 213.8 t02_SEC_30
+ID=13 161.44 168.9 210.62 t01_SEC_360
+ID=14 161.44 168.9 219.37 t01_SEC_390
+ID=15 161.44 171.38 219.37 t01_SEC_420
+###############################################################

@@ -1,0 +1,70 @@
+###############################################################
+# Settings:
+# de.lmu.ifi.dbs.elki.workflow.InputStep
+# -db StaticArrayDatabase
+# 
+# de.lmu.ifi.dbs.elki.database.StaticArrayDatabase
+# -dbc FileBasedDatabaseConnection
+# 
+# de.lmu.ifi.dbs.elki.datasource.FileBasedDatabaseConnection
+# -dbc.in /Users/BOX/Desktop/OS/proj/z/Analysis/cluster/ld/KW.csv
+# -dbc.parser DoubleVectorLabelParser
+# 
+# de.lmu.ifi.dbs.elki.datasource.parser.DoubleVectorLabelParser
+# -parser.colsep \s+
+# -parser.quote "
+# -parser.labelIndices [unset]
+# 
+# de.lmu.ifi.dbs.elki.datasource.FileBasedDatabaseConnection
+# -dbc.filter [unset]
+# 
+# de.lmu.ifi.dbs.elki.database.StaticArrayDatabase
+# -db.index [unset]
+# 
+# de.lmu.ifi.dbs.elki.workflow.AlgorithmStep
+# -algorithm clustering.EM
+# 
+# de.lmu.ifi.dbs.elki.algorithm.clustering.EM
+# -em.k 3
+# -em.delta 0.0
+# -em.seed [unset]
+# 
+# de.lmu.ifi.dbs.elki.workflow.EvaluationStep
+# -evaluator [unset]
+###############################################################
+# Cluster: Cluster 1
+# Serialization class: de.lmu.ifi.dbs.elki.data.model.EMModel
+# Cluster Mean: 156.48 169.66307123840733 207.289616027589
+# Mean: 156.48 169.66307123840733 207.289616027589
+# Covariance Matrix: [
+#  [ 0.00000000, 0.00000000,  0.00000000 ]
+#  [ 0.00000000, 1.31017567,  1.33090387 ]
+#  [ 0.00000000, 1.33090387, 20.84842295 ]
+# ]
+ID=1 156.48 171.38 208.24 t01_SEC_0
+ID=2 156.48 171.38 208.24 t01_SEC_30
+ID=3 156.48 171.38 205.06 t01_SEC_60
+ID=4 156.48 171.38 198.7 t01_SEC_90
+ID=5 156.48 168.9 204.26 t01_SEC_120
+ID=6 156.48 168.9 205.85 t01_SEC_150
+ID=7 156.48 168.9 205.85 t01_SEC_180
+ID=8 156.48 168.9 209.03 t01_SEC_210
+ID=9 156.48 168.9 209.03 t01_SEC_240
+ID=10 156.48 168.9 204.26 t01_SEC_270
+ID=11 156.48 168.9 204.26 t01_SEC_300
+ID=12 156.48 168.9 212.21 t01_SEC_330
+ID=23 156.48 171.38 212.21 t02_SEC_120
+ID=22 156.48 171.38 217.78 t02_SEC_90
+ID=25 156.48 171.38 215.39 t02_SEC_180
+ID=24 156.48 171.38 206.65 t02_SEC_150
+ID=27 156.48 168.9 201.88 t02_SEC_240
+ID=26 156.48 168.9 205.06 t02_SEC_210
+ID=29 156.48 168.9 200.29 t02_SEC_300
+ID=28 156.48 168.9 201.09 t02_SEC_270
+ID=31 156.48 168.9 212.21 t02_SEC_360
+ID=30 156.48 168.9 204.26 t02_SEC_330
+ID=34 156.48 168.9 210.62 t02_SEC_450
+ID=35 156.48 168.9 210.62 t02_SEC_480
+ID=32 156.48 168.9 211.42 t02_SEC_390
+ID=33 156.48 168.9 205.06 t02_SEC_420
+###############################################################
