@@ -437,10 +437,19 @@ int main(int argc, char *argv[])
 	createColor(3, 51,143, 51);
 
 	printf("Loading PNG image\n");
-	loadPNG(argv[1]);
+	if(loadPNG(argv[1]) != 0)
+        {
+		printf("Couldn't load image!\n");
+		exit(1);  
+	}
 	
 	printf("Loading cluster data\n");
-	loadData(argv[3]);
+	if(loadData(argv[3]) != 0)
+	{
+		printf("Couldn't open cluster data!\n");
+		exit(1);
+	}
+
 
 	if(heuristicSetExtents() == -1)
 	{
@@ -452,7 +461,11 @@ int main(int argc, char *argv[])
 	colorImage();
 	
 	printf("Saving new PNG image\n");
-	savePNG(argv[2]);
+	if(savePNG(argv[2]) != 0)
+	{
+		printf("Couldn't save PNG image!\n");
+		exit(1);
+	}
 	
 	if(imageData != NULL)
 	{

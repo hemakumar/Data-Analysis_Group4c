@@ -29,8 +29,8 @@ import Data.List
 ld,hd,pc -- | * these paths must be changed to match your computer
   :: FilePath
 -------------------------------------------------------------------------------
-ld = "/Users/BOX/Desktop/OS/proj/LD_A1_56p_2ppn_28n_IO-BASIC_even_RAWDATA"
-hd = "/Users/BOX/Desktop/OS/proj/HD_A1_224p_8ppn_28n_RAWDATA"
+ld = "../LD_A1_56p_2ppn_28n_IO-BASIC_even_RAWDATA"
+hd = "../HD_A1_224p_8ppn_28n_RAWDATA"
 pc = "/POWER-COOLING_perMetricPerTrial"
 -------------------------------------------------------------------------------
 points

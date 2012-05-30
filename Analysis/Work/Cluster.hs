@@ -22,7 +22,7 @@ elki_cli from f k = do
   rawSystem "java" $ cli++(dbc_in here)++f k++(out here)
   where 
   cli =  ["-cp",elki,"de.lmu.ifi.dbs.elki.application.KDDCLIApplication"]
-  elki = "/Users/BOX/Desktop/OS/proj/ELKI/elki.jar"
+  elki = "elki.jar"
   dbc_in here = ["-dbc.in",here++from++".csv"]
   out here = ["-out",here++from]
 -------------------------------------------------------------------------------
