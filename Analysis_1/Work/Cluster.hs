@@ -1,3 +1,8 @@
+{- Michael Novak
+ - mnovak@cecs.pdx.edu
+ - 5-31-2012
+ -}
+-------------------------------------------------------------------------------
 module Work.Cluster (elki_cli,kmeans,em,elkify) where
 -------------------------------------------------------------------------------
 import System.Directory
@@ -52,7 +57,8 @@ elkify isLD sec f name trial mode ts = do
   hat <- f thing
   let (cs,vs) = unzip hat
       pts = map (slicer ts) vs
-      labels | sec = [B.pack $ trial++"_SEC_"++show c | c <- cs]
+      t = (last trial):[]
+      labels | sec = [B.pack $ "("++t++","++show c++")" | c <- cs]
              | otherwise = [B.pack trial | c <- cs]
   createDirectoryIfMissing True "cluster"
   if isLD then createDirectoryIfMissing True "cluster/ld"
@@ -69,4 +75,4 @@ elkify isLD sec f name trial mode ts = do
   hClose outh
 -------------------------------------------------------------------------------
 slicer ts v = V.concat [V.slice s n v | (s,n) <- ts]
-
+-------------------------------------------------------------------------------

@@ -1,10 +1,16 @@
+{- Michael Novak
+ - mnovak@cecs.pdx.edu
+ - 5-31-2012
+ -}
+-------------------------------------------------------------------------------
 module Work.Plot 
-  (gnu_metric
+  (Batch(..)
+  ,gnu_metric
   ,gnu_form_metric
   ,generate_gnu
-  ,batched_gnu
+  ,generate_cluster
   ,get_ranges
-  ,plotify_all) where
+  ) where
 -------------------------------------------------------------------------------
 import System.Directory
 import System.IO
@@ -12,7 +18,6 @@ import Data.List
 import Control.Monad
 import qualified Data.Vector                                               as V
 import qualified Data.ByteString.Char8                                     as B
-import System.Process                                     
 import Data.Function                                                       (on)
 -------------------------------------------------------------------------------
 import Work.VecParse
@@ -129,21 +134,72 @@ generate_gnu isLD name dexs racks trial label x_range y_range = do
   hPutStrLn outh $ "\'\' u 1:($"++show i_n++") t \'"++t_n++"\' w lp ls "++show c_n
   hClose outh
 -------------------------------------------------------------------------------
-batched_gnu
-  :: Bool                                                           -- ^ is LD?
-  -> String                                               -- ^ name of dat file
-  -> [Int]                            -- ^ column indices to use as data points
-  -> [String]                                                        -- ^ racks
-  -> [String]                                                       -- ^ trials
-  -> String                                -- ^ name for y-axis in gnuplot file
-  -> (Int,Int)                                    -- ^ x-range for gnuplot file
-  -> (Double,Double)                              -- ^ y-range for gnuplot file
-  -> [Int]                                      -- ^ column step for each trial
-  -> IO ()                           -- ^ generate gnuplot files for each trial
+-- | * default k = 3; just a prototype for automation
+-- | * a better way would be to write a parser for the original gnu plot
+-- | * transform it into the overlayed cluster version depending on k
 -------------------------------------------------------------------------------
-batched_gnu isLD name dexs racks trials label x_range y_range fs =
-  forM_ (zip fs trials) $ \(f,t) ->
-    generate_gnu isLD name (map (+f) dexs) racks t label x_range y_range
+generate_cluster isLD name dexs racks trial label x_range y_range = do
+  createDirectoryIfMissing True "cluster"
+  if isLD then mapM_ (createDirectoryIfMissing True) ["cluster/ld","cluster/ld/"++name]
+  else mapM_ (createDirectoryIfMissing True) ["cluster/hd","cluster/hd/"++name]
+  outh <- if isLD then openFile ("cluster/ld/"++name++"/"++name++"_"++trial++".gnu") WriteMode
+          else openFile ("cluster/hd/"++name++"/"++name++"_"++trial++".gnu") WriteMode
+  hPutStrLn outh "reset"
+  if isLD then
+    hPutStrLn outh "set terminal pngcairo size 640,480 enhanced font \'Verdana,9\'"
+  else 
+    hPutStrLn outh "set terminal pngcairo size 1152,720 enhanced font \'Verdana,9\'"
+  let box = if isLD then "\'cluster/ld/"++name++"/"++name++"_"++trial++".png\'"
+            else "\'cluster/hd/"++name++"/"++name++"_"++trial++".png\'"
+  hPutStrLn outh $ "set output "++box
+  hPutStrLn outh "set tics nomirror"
+  let n = length racks
+      cs = color n
+  forM_ (zip [1..n] cs) $ \(i,c) ->
+    hPutStrLn outh $ "set style line "++show i++" lc rgb \'"++c++"\' pt 0 ps 1 lt 1 lw 4"
+  hPutStrLn outh $ "set key bottom rmargin title \'"++trial++"\'"
+  hPutStrLn outh "set xlabel \'SEC\'"
+  hPutStrLn outh $ "set ylabel \'"++label++"\'"
+  hPutStrLn outh $ "low = "++(show $ fst y_range)
+  hPutStrLn outh $ "high = "++(show $ snd y_range)
+  hPutStrLn outh $ "set xrange ["++(show $ fst x_range)++":"++(show $ snd x_range)++"]"
+  hPutStrLn outh $ "set yrange [low:high]"
+  if isLD then hPutStrLn outh "set xtics 60"
+  else hPutStrLn outh "set xtics 180"
+  hPutStrLn outh $ "k0(x) = (x==0?high:low)"
+  hPutStrLn outh $ "k1(x) = (x==1?high:low)"
+  hPutStrLn outh $ "k2(x) = (x==2?high:low)"
+  hPutStrLn outh $ "set style fill transparent solid 0.25"
+  hPutStrLn outh $ "set boxwidth 1 relative"
+  let dps = zip3 dexs racks [1..length racks]
+      (i_1,t_1,c_1) = head dps
+      lk = init $ tail dps
+      (i_n,t_n,c_n) = last dps
+      box = if isLD then "\'gnu/ld/plot/" else "\'gnu/hd/plot/"
+      box' = if isLD then "plot \'cluster/ld/"++name++"/" else "plot \'cluster/hd/"++name++"/"
+  hPutStr outh $ box'++trial++".dat\'"
+  hPutStrLn outh $ " u 1:(k0($2)) t \'K_1\' w boxes lc rgb \'#99C7EC\',\\"
+  hPutStrLn outh $ "\'\' u 1:(k1($2)) t \'K_2\' w boxes lc rgb \'#FFFAD2\',\\"
+  hPutStrLn outh $ "\'\' u 1:(k2($2)) t \'K_3\' w boxes lc rgb \'#F5A275\',\\"
+  hPutStr outh $ box++name++".dat\'"
+  hPutStrLn outh $ " u 1:($"++show i_1++") t \'"++t_1++"\' w lp ls "++show c_1++",\\"
+  forM_ lk $ \(i_k,t_k,c_k) ->
+    hPutStrLn outh $ "\'\' u 1:($"++show i_k++") t \'"++t_k++"\' w lp ls "++show c_k++",\\"
+  hPutStrLn outh $ "\'\' u 1:($"++show i_n++") t \'"++t_n++"\' w lp ls "++show c_n
+  hClose outh
+-------------------------------------------------------------------------------
+data Batch = 
+  Batch {isLD :: Bool                                               -- ^ is LD?
+        ,name :: String                                   -- ^ name of dat file
+        ,dexs :: [Int]                -- ^ column indices to use as data points
+        ,racks :: [String] 
+        ,trials :: [String] 
+        ,label :: String                   -- ^ name for y-axis in gnuplot file
+        ,x_range :: (Int, Int)                    -- ^ x-range for gnuplot file
+        ,y_range :: (Double, Double)              -- ^ y-range for gnuplot file
+        ,fs :: [Int]                            -- ^ column step for each trial
+        } deriving (Show)
+-------------------------------------------------------------------------------
 -------------------------------------------------------------------------------
 get_ranges
   :: Bool                                                           -- ^ is LD?
@@ -162,13 +218,3 @@ get_ranges isLD f name thresh = do
        y_min = f_min $ minimumBy (compare`on`f_min) hat     
        y_max = f_max $ maximumBy (compare`on`f_max) hat     
    return ((x_min,x_max),(y_min,y_max))
--------------------------------------------------------------------------------
-plotify_all
-  :: Bool                                                           -- ^ is LD?
-  -> IO ()      -- ^ execute gnuplot on all the gnu files and produce png files
--------------------------------------------------------------------------------
-plotify_all isLD = do
-  let dir = if isLD then "gnu/ld/" else "gnu/hd/"
-  ds <- getDirectoryContents dir
-  let ds' = filter (isSuffixOf ".gnu") ds
-  forM_ ds' $ \d -> rawSystem "gnuplot" [dir++d]

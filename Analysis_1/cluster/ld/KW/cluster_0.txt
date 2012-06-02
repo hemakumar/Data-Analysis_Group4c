@@ -1,0 +1,61 @@
+###############################################################
+# Settings:
+# de.lmu.ifi.dbs.elki.workflow.InputStep
+# -db StaticArrayDatabase
+# 
+# de.lmu.ifi.dbs.elki.database.StaticArrayDatabase
+# -dbc FileBasedDatabaseConnection
+# 
+# de.lmu.ifi.dbs.elki.datasource.FileBasedDatabaseConnection
+# -dbc.in /Users/BOX/Desktop/OS/proj/z/Analysis_2/cluster/ld/KW.csv
+# -dbc.parser DoubleVectorLabelParser
+# 
+# de.lmu.ifi.dbs.elki.datasource.parser.DoubleVectorLabelParser
+# -parser.colsep \s+
+# -parser.quote "
+# -parser.labelIndices [unset]
+# 
+# de.lmu.ifi.dbs.elki.datasource.FileBasedDatabaseConnection
+# -dbc.filter [unset]
+# 
+# de.lmu.ifi.dbs.elki.database.StaticArrayDatabase
+# -db.index [unset]
+# 
+# de.lmu.ifi.dbs.elki.workflow.AlgorithmStep
+# -algorithm clustering.EM
+# 
+# de.lmu.ifi.dbs.elki.algorithm.clustering.EM
+# -em.k 3
+# -em.delta 0.0
+# -em.seed [unset]
+# 
+# de.lmu.ifi.dbs.elki.workflow.EvaluationStep
+# -evaluator [unset]
+###############################################################
+# Cluster: Cluster 0
+# Serialization class: de.lmu.ifi.dbs.elki.data.model.EMModel
+# Cluster Mean: 159.1058821357396 171.08823511311638 211.69823506872194
+# Mean: 159.1058821357396 171.08823511311638 211.69823506872194
+# Covariance Matrix: [
+#  [  6.12911840, -0.68101262,  6.21922222 ]
+#  [ -0.68101262,  0.63845017, -0.96187901 ]
+#  [  6.21922222, -0.96187901, 27.72608441 ]
+# ]
+ID=1 156.48 171.38 208.24 (1,0)
+ID=2 156.48 171.38 208.24 (1,30)
+ID=3 156.48 171.38 205.06 (1,60)
+ID=4 156.48 171.38 198.7 (1,90)
+ID=13 161.44 168.9 210.62 (1,360)
+ID=14 161.44 168.9 219.37 (1,390)
+ID=15 161.44 171.38 219.37 (1,420)
+ID=17 161.44 171.38 209.03 (1,480)
+ID=16 161.44 171.38 210.62 (1,450)
+ID=19 161.44 171.38 213.8 (2,0)
+ID=18 161.44 171.38 214.6 (1,510)
+ID=21 161.44 171.38 215.39 (2,60)
+ID=20 161.44 171.38 213.8 (2,30)
+ID=23 156.48 171.38 212.21 (2,120)
+ID=22 156.48 171.38 217.78 (2,90)
+ID=25 156.48 171.38 215.39 (2,180)
+ID=24 156.48 171.38 206.65 (2,150)
+###############################################################
