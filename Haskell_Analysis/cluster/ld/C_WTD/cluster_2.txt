@@ -1,0 +1,69 @@
+###############################################################
+# Settings:
+# de.lmu.ifi.dbs.elki.workflow.InputStep
+# -db StaticArrayDatabase
+# 
+# de.lmu.ifi.dbs.elki.database.StaticArrayDatabase
+# -dbc FileBasedDatabaseConnection
+# 
+# de.lmu.ifi.dbs.elki.datasource.FileBasedDatabaseConnection
+# -dbc.in /Users/BOX/Desktop/OS/proj/z/Analysis_2/cluster/ld/C_WTD.csv
+# -dbc.parser DoubleVectorLabelParser
+# 
+# de.lmu.ifi.dbs.elki.datasource.parser.DoubleVectorLabelParser
+# -parser.colsep \s+
+# -parser.quote "
+# -parser.labelIndices [unset]
+# 
+# de.lmu.ifi.dbs.elki.datasource.FileBasedDatabaseConnection
+# -dbc.filter [unset]
+# 
+# de.lmu.ifi.dbs.elki.database.StaticArrayDatabase
+# -db.index [unset]
+# 
+# de.lmu.ifi.dbs.elki.workflow.AlgorithmStep
+# -algorithm clustering.EM
+# 
+# de.lmu.ifi.dbs.elki.algorithm.clustering.EM
+# -em.k 3
+# -em.delta 0.0
+# -em.seed [unset]
+# 
+# de.lmu.ifi.dbs.elki.workflow.EvaluationStep
+# -evaluator [unset]
+###############################################################
+# Cluster: Cluster 2
+# Serialization class: de.lmu.ifi.dbs.elki.data.model.EMModel
+# Cluster Mean: 7.2790243886009005 7.998941597536303 7.533352861660868
+# Mean: 7.2790243886009005 7.998941597536303 7.533352861660868
+# Covariance Matrix: [
+#  [  0.17902318, -0.00757132, -0.03980094 ]
+#  [ -0.00757132,  0.02583846,  0.00441502 ]
+#  [ -0.03980094,  0.00441502,  0.06554799 ]
+# ]
+ID=1 7.400000000000006 8.0 7.1000000000000085 (1,0)
+ID=2 7.400000000000006 7.799999999999997 7.1000000000000085 (1,30)
+ID=5 7.390000000000001 8.0 7.299999999999997 (1,120)
+ID=6 7.390000000000001 8.0 7.5 (1,150)
+ID=7 7.0 8.0 7.700000000000003 (1,180)
+ID=8 7.0 8.0 7.400000000000006 (1,210)
+ID=9 7.5 8.0 7.400000000000006 (1,240)
+ID=10 7.5 8.0 7.5 (1,270)
+ID=13 7.609999999999999 7.709999999999994 7.200000000000003 (1,360)
+ID=17 6.900000000000006 8.200000000000003 8.099999999999994 (1,480)
+ID=16 6.900000000000006 8.200000000000003 7.700000000000003 (1,450)
+ID=19 7.3999999999999915 8.11 7.799999999999997 (2,0)
+ID=18 7.3999999999999915 8.11 7.900000000000006 (1,510)
+ID=24 7.799999999999997 8.0 7.400000000000006 (2,150)
+ID=27 7.5 8.099999999999994 7.400000000000006 (2,240)
+ID=26 7.5 8.099999999999994 7.5 (2,210)
+ID=29 7.5 8.099999999999994 7.199999999999989 (2,300)
+ID=28 7.5 8.099999999999994 7.5 (2,270)
+ID=31 6.3999999999999915 8.200000000000003 7.5 (2,360)
+ID=30 6.3999999999999915 8.200000000000003 7.400000000000006 (2,330)
+ID=32 7.5 8.0 7.5 (2,390)
+ID=38 6.799999999999997 7.799999999999997 7.900000000000006 (3,30)
+ID=39 6.799999999999997 7.799999999999997 7.900000000000006 (3,60)
+ID=36 7.709999999999994 7.709999999999994 7.400000000000006 (2,510)
+ID=37 6.5 7.709999999999994 7.800000000000011 (3,0)
+###############################################################

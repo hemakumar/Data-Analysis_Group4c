@@ -1,0 +1,28 @@
+-------------------------------------------------------------------------------
+(i)  Run the program as an executable:
+     $ ghc --make analysis
+     $ ./analysis
+-------------------------------------------------------------------------------
+Don't run it as a script, because there are too many system processes going on.
+-------------------------------------------------------------------------------
+----------------
+gnu/[ld|hd]/plot
+----------------
+* It will generate plots for LD TMU metrics: Water Temp Delta & Manifold Press
+* It will generate plots for LD & HD Power Unit Metric: Power kWh
+* It will generate plots for LD & HD Chiller Metrics: 
+  - COP (coefficient of performance)
+  - C_WTD (condenser water temp delta)
+  - CH_WTD (chilled water temp delta)
+  - Loads 
+  - KW (cooling load)
+    ------------------------
+    cluster/[ld|hd]/[metric]
+    ------------------------
+    ~ It will also run ELKI EM clustering with k=3 on all these metrics
+      (across all 3 trials)
+    ~ And it will produce plots with cluster overlays for all these metrics 
+-------------
+table/[ld|hd]
+-------------
+* It also produces LaTeX tables for node average metrics

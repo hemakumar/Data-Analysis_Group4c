@@ -1,0 +1,75 @@
+###############################################################
+# Settings:
+# de.lmu.ifi.dbs.elki.workflow.InputStep
+# -db StaticArrayDatabase
+# 
+# de.lmu.ifi.dbs.elki.database.StaticArrayDatabase
+# -dbc FileBasedDatabaseConnection
+# 
+# de.lmu.ifi.dbs.elki.datasource.FileBasedDatabaseConnection
+# -dbc.in /Users/BOX/Desktop/OS/proj/z/Analysis_2/cluster/ld/KW.csv
+# -dbc.parser DoubleVectorLabelParser
+# 
+# de.lmu.ifi.dbs.elki.datasource.parser.DoubleVectorLabelParser
+# -parser.colsep \s+
+# -parser.quote "
+# -parser.labelIndices [unset]
+# 
+# de.lmu.ifi.dbs.elki.datasource.FileBasedDatabaseConnection
+# -dbc.filter [unset]
+# 
+# de.lmu.ifi.dbs.elki.database.StaticArrayDatabase
+# -db.index [unset]
+# 
+# de.lmu.ifi.dbs.elki.workflow.AlgorithmStep
+# -algorithm clustering.EM
+# 
+# de.lmu.ifi.dbs.elki.algorithm.clustering.EM
+# -em.k 3
+# -em.delta 0.0
+# -em.seed [unset]
+# 
+# de.lmu.ifi.dbs.elki.workflow.EvaluationStep
+# -evaluator [unset]
+###############################################################
+# Cluster: Cluster 1
+# Serialization class: de.lmu.ifi.dbs.elki.data.model.EMModel
+# Cluster Mean: 157.52000004717465 166.81580635707346 207.80096768875873
+# Mean: 157.52000004717465 166.81580635707346 207.80096768875873
+# Covariance Matrix: [
+#  [  1.49760002, -3.00123875,  1.85259369 ]
+#  [ -3.00123875,  6.01457927, -3.71265751 ]
+#  [  1.85259369, -3.71265751, 18.98792514 ]
+# ]
+ID=5 156.48 168.9 204.26 (1,120)
+ID=6 156.48 168.9 205.85 (1,150)
+ID=7 156.48 168.9 205.85 (1,180)
+ID=8 156.48 168.9 209.03 (1,210)
+ID=9 156.48 168.9 209.03 (1,240)
+ID=10 156.48 168.9 204.26 (1,270)
+ID=11 156.48 168.9 204.26 (1,300)
+ID=12 156.48 168.9 212.21 (1,330)
+ID=27 156.48 168.9 201.88 (2,240)
+ID=26 156.48 168.9 205.06 (2,210)
+ID=29 156.48 168.9 200.29 (2,300)
+ID=28 156.48 168.9 201.09 (2,270)
+ID=31 156.48 168.9 212.21 (2,360)
+ID=30 156.48 168.9 204.26 (2,330)
+ID=34 156.48 168.9 210.62 (2,450)
+ID=35 156.48 168.9 210.62 (2,480)
+ID=32 156.48 168.9 211.42 (2,390)
+ID=33 156.48 168.9 205.06 (2,420)
+ID=42 158.96 163.93 206.65 (3,150)
+ID=43 158.96 163.93 213.8 (3,180)
+ID=46 158.96 163.93 207.44 (3,270)
+ID=47 158.96 163.93 211.42 (3,300)
+ID=44 158.96 163.93 216.19 (3,210)
+ID=45 158.96 163.93 207.44 (3,240)
+ID=51 158.96 163.93 209.83 (3,420)
+ID=50 158.96 163.93 215.39 (3,390)
+ID=49 158.96 163.93 215.39 (3,360)
+ID=48 158.96 163.93 210.62 (3,330)
+ID=54 158.96 163.93 201.88 (3,510)
+ID=53 158.96 163.93 204.26 (3,480)
+ID=52 158.96 163.93 204.26 (3,450)
+###############################################################

@@ -1,0 +1,76 @@
+###############################################################
+# Settings:
+# de.lmu.ifi.dbs.elki.workflow.InputStep
+# -db StaticArrayDatabase
+# 
+# de.lmu.ifi.dbs.elki.database.StaticArrayDatabase
+# -dbc FileBasedDatabaseConnection
+# 
+# de.lmu.ifi.dbs.elki.datasource.FileBasedDatabaseConnection
+# -dbc.in /Users/BOX/Desktop/OS/proj/z/Analysis_2/cluster/hd/CH_WTD.csv
+# -dbc.parser DoubleVectorLabelParser
+# 
+# de.lmu.ifi.dbs.elki.datasource.parser.DoubleVectorLabelParser
+# -parser.colsep \s+
+# -parser.quote "
+# -parser.labelIndices [unset]
+# 
+# de.lmu.ifi.dbs.elki.datasource.FileBasedDatabaseConnection
+# -dbc.filter [unset]
+# 
+# de.lmu.ifi.dbs.elki.database.StaticArrayDatabase
+# -db.index [unset]
+# 
+# de.lmu.ifi.dbs.elki.workflow.AlgorithmStep
+# -algorithm clustering.EM
+# 
+# de.lmu.ifi.dbs.elki.algorithm.clustering.EM
+# -em.k 3
+# -em.delta 0.0
+# -em.seed [unset]
+# 
+# de.lmu.ifi.dbs.elki.workflow.EvaluationStep
+# -evaluator [unset]
+###############################################################
+# Cluster: Cluster 1
+# Serialization class: de.lmu.ifi.dbs.elki.data.model.EMModel
+# Cluster Mean: 7.355024128678352 7.019204769864417
+# Mean: 7.355024128678352 7.019204769864417
+# Covariance Matrix: [
+#  [ 0.14344614, 0.03980694 ]
+#  [ 0.03980694, 0.01974110 ]
+# ]
+ID=137 8.199999999999996 7.200000000000003 (2,900)
+ID=65 7.200000000000003 7.0 (1,1920)
+ID=66 7.200000000000003 6.899999999999999 (1,1950)
+ID=281 7.200000000000003 7.0 (3,2040)
+ID=280 7.200000000000003 7.0 (3,2010)
+ID=259 7.0 7.0 (3,1380)
+ID=216 8.199999999999996 7.199999999999996 (3,90)
+ID=217 8.199999999999996 7.199999999999996 (3,120)
+ID=260 7.0 6.899999999999999 (3,1410)
+ID=261 7.0 6.899999999999999 (3,1440)
+ID=266 7.200000000000003 7.0 (3,1590)
+ID=305 6.700000000000003 6.699999999999996 (3,2760)
+ID=307 6.800000000000004 6.699999999999996 (3,2820)
+ID=306 6.800000000000004 6.699999999999996 (3,2790)
+ID=309 7.0 7.0 (3,2880)
+ID=308 7.0 7.0 (3,2850)
+ID=311 7.0 7.0 (3,2940)
+ID=310 7.0 7.0 (3,2910)
+ID=313 7.100000000000001 6.899999999999999 (3,3000)
+ID=312 7.100000000000001 6.899999999999999 (3,2970)
+ID=255 7.100000000000001 7.0 (3,1260)
+ID=289 7.199999999999996 7.0 (3,2280)
+ID=290 7.199999999999996 6.900000000000006 (3,2310)
+ID=291 6.899999999999999 6.899999999999999 (3,2340)
+ID=250 7.200000000000003 7.0 (3,1110)
+ID=292 6.899999999999999 6.899999999999999 (3,2370)
+ID=251 7.200000000000003 7.0 (3,1140)
+ID=297 6.700000000000003 6.899999999999999 (3,2520)
+ID=298 6.700000000000003 6.899999999999999 (3,2550)
+ID=299 6.700000000000003 6.899999999999999 (3,2580)
+ID=300 6.700000000000003 6.799999999999997 (3,2610)
+ID=301 7.100000000000001 6.899999999999999 (3,2640)
+ID=302 7.100000000000001 6.899999999999999 (3,2670)
+###############################################################
