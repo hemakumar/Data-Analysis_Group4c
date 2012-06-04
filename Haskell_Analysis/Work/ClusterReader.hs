@@ -3,7 +3,7 @@
  - 5-31-2012
  -}
 -------------------------------------------------------------------------------
-module Work.ClusterReader (Form(..),reader) where
+module Work.ClusterReader (Chiller(..),reader) where
 -------------------------------------------------------------------------------
 import Text.ParserCombinators.Parsec                               hiding (try)
 import qualified Text.ParserCombinators.Parsec.Char                        as C
@@ -19,11 +19,11 @@ lexer = T.makeTokenParser emptyDef
 whiteSpace = T.whiteSpace lexer
 nat = T.natural lexer
 -------------------------------------------------------------------------------
-data Form = Form {notHD   :: Bool
-                 ,metric :: String
-                 ,alg    :: [String]
-                 ,k      :: Int
-                 } deriving (Show)
+data Chiller = Chiller {notHD   :: Bool
+                       ,metric :: String
+                       ,alg    :: [String]
+                       ,k      :: Int
+                       } deriving (Show)
 -------------------------------------------------------------------------------
 p_wl = do 
   C.string "hd"
@@ -62,7 +62,7 @@ p_form = do
   metric <- p_metric
   C.space
   (k,alg) <- p_alg
-  return $ Form wl metric alg k
+  return $ Chiller wl metric alg k
 -------------------------------------------------------------------------------
 p_top = do 
   whiteSpace

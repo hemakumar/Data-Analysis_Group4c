@@ -14,8 +14,10 @@ set style line 5 lc rgb '#CC6677' pt 0 ps 1 lt 1 lw 4
 set key bottom rmargin title 't01'
 set xlabel 'SEC'
 set ylabel 'TMU WATER-TEMP DELTA'
+low = 0.8100000000000023
+high = 8.060000000000002
 set xrange [0:530]
-set yrange [0.8100000000000023:8.060000000000002]
+set yrange [low:high]
 set xtics 60
 plot 'gnu/ld/plot/TMU_WTD.dat' u 1:($2) t 'A1' w lp ls 1,\
 '' u 1:($3) t 'B1' w lp ls 2,\

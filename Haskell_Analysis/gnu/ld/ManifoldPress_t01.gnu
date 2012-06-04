@@ -14,8 +14,10 @@ set style line 5 lc rgb '#CC6677' pt 0 ps 1 lt 1 lw 4
 set key bottom rmargin title 't01'
 set xlabel 'SEC'
 set ylabel 'TMU MANIFOLD PRESSURE'
+low = 22.08
+high = 26.1
 set xrange [0:530]
-set yrange [22.08:26.1]
+set yrange [low:high]
 set xtics 60
 plot 'gnu/ld/plot/ManifoldPress.dat' u 1:($2) t 'A1' w lp ls 1,\
 '' u 1:($3) t 'B1' w lp ls 2,\

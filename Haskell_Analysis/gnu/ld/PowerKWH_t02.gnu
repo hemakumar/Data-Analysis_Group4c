@@ -16,8 +16,10 @@ set style line 7 lc rgb '#AA4499' pt 0 ps 1 lt 1 lw 4
 set key bottom rmargin title 't02'
 set xlabel 'SEC'
 set ylabel 'POWER-UNIT KWH'
+low = 150.23
+high = 194.41
 set xrange [0:530]
-set yrange [150.23:194.41]
+set yrange [low:high]
 set xtics 60
 plot 'gnu/ld/plot/PowerKWH.dat' u 1:($10) t 'A1' w lp ls 1,\
 '' u 1:($12) t 'A3' w lp ls 2,\

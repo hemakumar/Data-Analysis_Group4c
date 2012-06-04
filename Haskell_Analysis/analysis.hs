@@ -3,13 +3,9 @@
  - 5-31-2012
  -}
 -------------------------------------------------------------------------------
-{- run as a script:
- - runghc analysis.hs
- -}
--------------------------------------------------------------------------------
 {- make an executable:
  - ghc --make analysis
- - ./analysis
+ - ./analysis <[em|k-means]> <k>
  -}
 -------------------------------------------------------------------------------
 import System.Process                                     
@@ -22,6 +18,7 @@ import Data.Function
 import Data.Map                                                           (Map)
 import qualified Data.Map                                                  as M
 import Data.Maybe
+import System                                                         (getArgs)
 -------------------------------------------------------------------------------
 import Work.VecParse
 import Work.Table
@@ -30,17 +27,21 @@ import Work.ClusterReader
 import Work.Cluster
 -------------------------------------------------------------------------------
 main = do
+  args <- getArgs
+  when (length args/=2) $ fail "Expecting: <clustering algorithm> <k>"
+  let alg_in  = head args
+      k_in = (read $ last args)::Int
+  when (k_in<3) $ fail "k must be greater than 2"
+  when (k_in>11) $ fail "k > 11 is not yet implemented -- colors become indistinguishable beyond 11"
   ask <- doesDirectoryExist "table"
   unless ask $ mapM_ tables [True,False]
   ask <- doesDirectoryExist "gnu"
-  unless ask $ do
-    tmu
-    forM_ [power,chillers] $ \f -> mapM_ f [True,False]
-  let automagic = concat [map reader [wl++" COP em 3"
-                                     ,wl++" C_WTD em 3"
-                                     ,wl++" CH_WTD em 3"
-                                     ,wl++" Loads em 3"
-                                     ,wl++" KW em 3"] | wl <- ["ld","hd"]]
+  when ask $ putStrLn "Overwriting gnu & cluster directories ..."
+  tmu k_in
+  forM_ [power,chillers] $ \f -> mapM_ f $ zip [True,False] [k_in,k_in]
+  let automagic = map reader 
+                  [wl++" "++m++" "++alg_in++" "++show k_in 
+                  | wl <- ["ld","hd"], m <- ["C_WTD","CH_WTD","COP","KW","Loads"]]
   forM_ [make_things,organize_things,render_things] $ \f -> mapM_ f automagic
 -------------------------------------------------------------------------------
 class Workflow a where
@@ -48,9 +49,9 @@ class Workflow a where
   organize_things :: a -> IO ()
   render_things :: a -> IO ()
 -------------------------------------------------------------------------------
-instance Workflow Form where   
+instance Workflow Chiller where   
 -------------------------------------------------------------------------------
-  make_things (Form isLD metric alg k) = do
+  make_things (Chiller isLD metric alg k) = do
     let trials = ["t01","t02","t03"]
         modes = [WriteMode,AppendMode,AppendMode]
         tss = if isLD then [[(0+i,3)] | i<-[0,3,6]]
@@ -63,7 +64,7 @@ instance Workflow Form where
     elki_cli dir alg
     return ()
 -------------------------------------------------------------------------------
-  organize_things (Form isLD metric alg k) = do
+  organize_things (Chiller isLD metric alg k) = do
     let dir = if isLD then "cluster/ld/"++metric 
               else "cluster/hd/"++metric
         ck = [(i,dir++"/cluster_"++show i++".txt") | i <- [0..pred k]]
@@ -90,13 +91,13 @@ instance Workflow Form where
     forM_ ds'' $ \d -> rawSystem "gnuplot" [dir++"/"++d]
 -------------------------------------------------------------------------------
 instance Workflow Batch where
-  make_things (Batch isLD name dexs racks trials label x_range y_range fs) =
+  make_things (Batch isLD name dexs racks trials label x_range y_range fs cluster_k) =
     forM_ (zip fs trials) $ \(f,t) ->
       generate_gnu isLD name (map (+f) dexs) racks t label x_range y_range
 -------------------------------------------------------------------------------
-  organize_things (Batch isLD name dexs racks trials label x_range y_range fs) =
+  organize_things (Batch isLD name dexs racks trials label x_range y_range fs cluster_k) =
     forM_ (zip fs trials) $ \(f,t) -> do
-      generate_cluster isLD name (map (+f) dexs) racks t label x_range y_range
+      generate_cluster isLD name (map (+f) dexs) racks t label x_range y_range cluster_k
 -------------------------------------------------------------------------------
   render_things b = do
     let dir = if (isLD b) then "gnu/ld/" else "gnu/hd/"
@@ -104,6 +105,68 @@ instance Workflow Batch where
     let ds' = filter (isPrefixOf $ name b) ds
         ds'' = filter (isSuffixOf ".gnu") ds'
     forM_ ds'' $ \d -> rawSystem "gnuplot" [dir++d]
+-------------------------------------------------------------------------------
+tables isLD = do
+  let racks = ["A1","A3","A4","B1","B2","B3","B4"]
+      trials = ["t01","t02","t03"]
+  latex_node_metric (0,999) vec_delta node_avg "DeltaAvg" isLD racks trials "/PowerUnit/" "PowerUnit" "PowerKWH"
+  latex_node_metric (72,150) vec_max node_max "MaxMax" isLD racks trials "/CPUTemp/" "CPU" "Temp"
+  latex_node_metric (72,150) vec_min node_min "MinMin" isLD racks trials "/CPUTemp/" "CPU" "Temp"
+  latex_node_metric (72,150) vec_avg node_avg "AvgAvg" isLD racks trials "/CPUTemp/" "CPU" "Temp"
+  latex_node_form_metric (0,40) vec_avg node_avg "AvgAvg" isLD racks trials "/AirTemp/" "NodeAir" (-) "ExchangeTemp" "InTemp" "Delta"
+-------------------------------------------------------------------------------
+power (ask,k') = do
+  let racks = ["A1","A3","A4","B1","B2","B3","B4"]
+      trials = ["t01","t02","t03"]
+  let dir = "/PowerUnit/"
+  gnu_metric ask dir "PowerKWH" 10
+  let threshold = if ask then 130 else 250
+  (x,y) <- get_ranges ask extract "PowerKWH" threshold
+  let batch = Batch ask "PowerKWH" ([2]++[4..9]) racks trials "POWER-UNIT KWH" x y [0,8,16] k'
+  forM_ [make_things,organize_things,render_things] $ \f -> f batch
+-------------------------------------------------------------------------------
+tmu k' = do
+  let dir = "/ThermalManagementUnit/"
+  gnu_metric True dir "ManifoldPress" 10
+  gnu_form_metric True dir (-) "WaterOutletTemp" "WaterInletTemp" "TMU_WTD" 10
+  (x,y) <- get_ranges True extract "ManifoldPress" 21
+  let racks = ["A1","B1","B2","B3","B4"]
+      trials = ["t01","t02","t03"]
+      batch = Batch True "ManifoldPress" ([2..6]) racks trials "TMU MANIFOLD PRESSURE" 
+              x y [0,5,10] k'
+  forM_ [make_things,organize_things,render_things] $ \f -> f batch
+  (x,y) <- get_ranges True extract "TMU_WTD" 0.5
+  let batch = Batch True "TMU_WTD" ([2..6]) racks trials "TMU WATER-TEMP DELTA"
+              x y [0,5,10] k'
+  forM_ [make_things,organize_things,render_things] $ \f -> f batch
+-------------------------------------------------------------------------------
+chillers (ask,k') = do
+  let chillers = if ask then ["C1","C2","C4"] else ["C1","C4"]
+      trials = ["t01","t02","t03"] 
+      dex = if ask then [2,3,5] else [2,5]
+  gnu_metric ask "/ChillerMeasurement/" "KW" 30
+  gnu_metric ask "/ChillerMeasurement/" "Loads" 30
+  gnu_form_metric ask "/ChillerMeasurement/" (/) "Loads" "KW" "COP" 30
+  gnu_form_metric ask "/ChillerMeasurement/" (-) "LCWT" "ECWT" "C_WTD" 30
+  gnu_form_metric ask "/ChillerMeasurement/" (-) "ECHWT" "LCHWT" "CH_WTD" 30
+  (x,y) <- get_ranges ask extract "KW" 0
+  let batch = Batch ask "KW" dex chillers trials "KW" x y [0,5,10] k'
+  forM_ [make_things,organize_things,render_things] $ \f -> f batch
+  (x,y) <- get_ranges ask extract "Loads" 0
+  let batch = Batch ask "Loads" dex chillers trials "Loads" x y [0,5,10] k'
+  forM_ [make_things,organize_things,render_things] $ \f -> f batch
+  (x,y) <- get_ranges ask extract_NaN "COP" 0.1
+  let batch = Batch ask "COP" dex chillers trials "COP" x y [0,5,10] k'
+  forM_ [make_things,organize_things,render_things] $ \f -> f batch
+  (x,y) <- get_ranges ask extract "C_WTD" 3
+  let batch = Batch ask "C_WTD" dex chillers trials "CONDENSER WATER-TEMP DELTA"
+              x y [0,5,10] k'
+  forM_ [make_things,organize_things,render_things] $ \f -> f batch
+  (x,y) <- get_ranges ask extract "CH_WTD" 3
+  let batch = Batch ask "CH_WTD" dex chillers trials "CHILLER WATER-TEMP DELTA"
+              x y [0,5,10] k'
+  forM_ [make_things,organize_things,render_things] $ \f -> f batch
+{-
 -------------------------------------------------------------------------------
 -- | rudimentary user interface
 -------------------------------------------------------------------------------
@@ -120,67 +183,6 @@ clustering = do
   let ask = head l=='y'  
   when ask clustering
 -------------------------------------------------------------------------------
-tables isLD = do
-  let racks = ["A1","A3","A4","B1","B2","B3","B4"]
-      trials = ["t01","t02","t03"]
-  latex_node_metric (0,999) vec_delta node_avg "DeltaAvg" isLD racks trials "/PowerUnit/" "PowerUnit" "PowerKWH"
-  latex_node_metric (72,150) vec_max node_max "MaxMax" isLD racks trials "/CPUTemp/" "CPU" "Temp"
-  latex_node_metric (72,150) vec_min node_min "MinMin" isLD racks trials "/CPUTemp/" "CPU" "Temp"
-  latex_node_metric (72,150) vec_avg node_avg "AvgAvg" isLD racks trials "/CPUTemp/" "CPU" "Temp"
-  latex_node_form_metric (0,40) vec_avg node_avg "AvgAvg" isLD racks trials "/AirTemp/" "NodeAir" (-) "ExchangeTemp" "InTemp" "Delta"
--------------------------------------------------------------------------------
-power ask = do
-  let racks = ["A1","A3","A4","B1","B2","B3","B4"]
-      trials = ["t01","t02","t03"]
-  let dir = "/PowerUnit/"
-  gnu_metric ask dir "PowerKWH" 10
-  let threshold = if ask then 130 else 250
-  (x,y) <- get_ranges ask extract "PowerKWH" threshold
-  let batch = Batch ask "PowerKWH" ([2]++[4..9]) racks trials "POWER-UNIT KWH" x y [0,8,16]
-  forM_ [make_things,organize_things,render_things] $ \f -> f batch
--------------------------------------------------------------------------------
-tmu = do
-  let dir = "/ThermalManagementUnit/"
-  gnu_metric True dir "ManifoldPress" 10
-  gnu_form_metric True dir (-) "WaterOutletTemp" "WaterInletTemp" "TMU_WTD" 10
-  (x,y) <- get_ranges True extract "ManifoldPress" 21
-  let racks = ["A1","B1","B2","B3","B4"]
-      trials = ["t01","t02","t03"]
-      batch = Batch True "ManifoldPress" ([2..6]) racks trials "TMU MANIFOLD PRESSURE" 
-              x y [0,5,10]
-  forM_ [make_things,organize_things,render_things] $ \f -> f batch
-  (x,y) <- get_ranges True extract "TMU_WTD" 0.5
-  let batch = Batch True "TMU_WTD" ([2..6]) racks trials "TMU WATER-TEMP DELTA"
-              x y [0,5,10]
-  forM_ [make_things,organize_things,render_things] $ \f -> f batch
--------------------------------------------------------------------------------
-chillers ask = do
-  let chillers = if ask then ["C1","C2","C4"] else ["C1","C4"]
-      trials = ["t01","t02","t03"] 
-      dex = if ask then [2,3,5] else [2,5]
-  gnu_metric ask "/ChillerMeasurement/" "KW" 30
-  gnu_metric ask "/ChillerMeasurement/" "Loads" 30
-  gnu_form_metric ask "/ChillerMeasurement/" (/) "Loads" "KW" "COP" 30
-  gnu_form_metric ask "/ChillerMeasurement/" (-) "LCWT" "ECWT" "C_WTD" 30
-  gnu_form_metric ask "/ChillerMeasurement/" (-) "ECHWT" "LCHWT" "CH_WTD" 30
-  (x,y) <- get_ranges ask extract "KW" 0
-  let batch = Batch ask "KW" dex chillers trials "KW" x y [0,5,10]
-  forM_ [make_things,organize_things,render_things] $ \f -> f batch
-  (x,y) <- get_ranges ask extract "Loads" 0
-  let batch = Batch ask "Loads" dex chillers trials "Loads" x y [0,5,10]
-  forM_ [make_things,organize_things,render_things] $ \f -> f batch
-  (x,y) <- get_ranges ask extract_NaN "COP" 0.1
-  let batch = Batch ask "COP" dex chillers trials "COP" x y [0,5,10]
-  forM_ [make_things,organize_things,render_things] $ \f -> f batch
-  (x,y) <- get_ranges ask extract "C_WTD" 3
-  let batch = Batch ask "C_WTD" dex chillers trials "CONDENSER WATER-TEMP DELTA"
-              x y [0,5,10]
-  forM_ [make_things,organize_things,render_things] $ \f -> f batch
-  (x,y) <- get_ranges ask extract "CH_WTD" 3
-  let batch = Batch ask "CH_WTD" dex chillers trials "CHILLER WATER-TEMP DELTA"
-              x y [0,5,10]
-  forM_ [make_things,organize_things,render_things] $ \f -> f batch
-{-
     let stem = if isLD then "gnu/ld/plot/" else "gnu/hd/plot/" 
     ds <- getDirectoryContents stem
     let ds' = filter (isSuffixOf $ metric++".dat") ds

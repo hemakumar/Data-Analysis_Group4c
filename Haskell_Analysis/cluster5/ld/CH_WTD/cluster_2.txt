@@ -1,0 +1,50 @@
+###############################################################
+# Settings:
+# de.lmu.ifi.dbs.elki.workflow.InputStep
+# -db StaticArrayDatabase
+# 
+# de.lmu.ifi.dbs.elki.database.StaticArrayDatabase
+# -dbc FileBasedDatabaseConnection
+# 
+# de.lmu.ifi.dbs.elki.datasource.FileBasedDatabaseConnection
+# -dbc.in /Users/BOX/Desktop/OS/Zproj/zAnalysis/Analysis_2/cluster/ld/CH_WTD.csv
+# -dbc.parser DoubleVectorLabelParser
+# 
+# de.lmu.ifi.dbs.elki.datasource.parser.DoubleVectorLabelParser
+# -parser.colsep \s+
+# -parser.quote "
+# -parser.labelIndices [unset]
+# 
+# de.lmu.ifi.dbs.elki.datasource.FileBasedDatabaseConnection
+# -dbc.filter [unset]
+# 
+# de.lmu.ifi.dbs.elki.database.StaticArrayDatabase
+# -db.index [unset]
+# 
+# de.lmu.ifi.dbs.elki.workflow.AlgorithmStep
+# -algorithm clustering.KMeans
+# 
+# de.lmu.ifi.dbs.elki.algorithm.clustering.KMeans
+# -algorithm.distancefunction EuclideanDistanceFunction
+# -kmeans.k 5
+# -kmeans.maxiter 0
+# -kmeans.seed [unset]
+# 
+# de.lmu.ifi.dbs.elki.workflow.EvaluationStep
+# -evaluator [unset]
+###############################################################
+# Cluster: Cluster 2
+# Serialization class: de.lmu.ifi.dbs.elki.data.model.MeanModel
+# Cluster Mean: 7.218181818181816 7.014545454545453 7.190909090909092
+ID=5 7.099999999999994 6.899999999999999 7.100000000000001 (1,120)
+ID=6 7.099999999999994 6.899999999999999 7.0 (1,150)
+ID=26 7.099999999999994 6.899999999999999 7.300000000000004 (2,210)
+ID=27 7.099999999999994 6.899999999999999 7.299999999999997 (2,240)
+ID=36 7.200000000000003 6.509999999999998 7.199999999999996 (2,510)
+ID=37 7.0 7.109999999999999 7.300000000000004 (3,0)
+ID=47 7.299999999999997 7.209999999999994 7.200000000000003 (3,300)
+ID=48 7.099999999999994 7.200000000000003 7.200000000000003 (3,330)
+ID=52 7.200000000000003 7.209999999999994 7.100000000000001 (3,450)
+ID=53 7.600000000000001 7.209999999999994 7.100000000000001 (3,480)
+ID=54 7.600000000000001 7.109999999999999 7.299999999999997 (3,510)
+###############################################################

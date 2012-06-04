@@ -1,0 +1,96 @@
+###############################################################
+# Settings:
+# de.lmu.ifi.dbs.elki.workflow.InputStep
+# -db StaticArrayDatabase
+# 
+# de.lmu.ifi.dbs.elki.database.StaticArrayDatabase
+# -dbc FileBasedDatabaseConnection
+# 
+# de.lmu.ifi.dbs.elki.datasource.FileBasedDatabaseConnection
+# -dbc.in /Users/BOX/Desktop/OS/Zproj/zAnalysis/Analysis_2/cluster/hd/Loads.csv
+# -dbc.parser DoubleVectorLabelParser
+# 
+# de.lmu.ifi.dbs.elki.datasource.parser.DoubleVectorLabelParser
+# -parser.colsep \s+
+# -parser.quote "
+# -parser.labelIndices [unset]
+# 
+# de.lmu.ifi.dbs.elki.datasource.FileBasedDatabaseConnection
+# -dbc.filter [unset]
+# 
+# de.lmu.ifi.dbs.elki.database.StaticArrayDatabase
+# -db.index [unset]
+# 
+# de.lmu.ifi.dbs.elki.workflow.AlgorithmStep
+# -algorithm clustering.KMeans
+# 
+# de.lmu.ifi.dbs.elki.algorithm.clustering.KMeans
+# -algorithm.distancefunction EuclideanDistanceFunction
+# -kmeans.k 8
+# -kmeans.maxiter 0
+# -kmeans.seed [unset]
+# 
+# de.lmu.ifi.dbs.elki.workflow.EvaluationStep
+# -evaluator [unset]
+###############################################################
+# Cluster: Cluster 4
+# Serialization class: de.lmu.ifi.dbs.elki.data.model.MeanModel
+# Cluster Mean: 63.473684210526315 65.0
+ID=56 65.0 65.0 (1,1650)
+ID=69 65.0 65.0 (1,2040)
+ID=71 65.0 65.0 (1,2100)
+ID=80 65.0 65.0 (1,2370)
+ID=81 65.0 65.0 (1,2400)
+ID=119 65.0 65.0 (2,360)
+ID=136 64.0 65.0 (2,870)
+ID=137 65.0 65.0 (2,900)
+ID=139 65.0 65.0 (2,960)
+ID=213 65.0 65.0 (3,0)
+ID=214 65.0 65.0 (3,30)
+ID=215 65.0 65.0 (3,60)
+ID=240 64.0 65.0 (3,810)
+ID=242 63.0 64.0 (3,870)
+ID=243 63.0 64.0 (3,900)
+ID=247 64.0 66.0 (3,1020)
+ID=248 63.0 65.0 (3,1050)
+ID=249 63.0 65.0 (3,1080)
+ID=250 63.0 64.0 (3,1110)
+ID=251 63.0 64.0 (3,1140)
+ID=252 63.0 66.0 (3,1170)
+ID=253 63.0 64.0 (3,1200)
+ID=254 64.0 65.0 (3,1230)
+ID=257 64.0 66.0 (3,1320)
+ID=258 64.0 66.0 (3,1350)
+ID=263 64.0 66.0 (3,1500)
+ID=266 64.0 65.0 (3,1590)
+ID=267 64.0 66.0 (3,1620)
+ID=268 64.0 65.0 (3,1650)
+ID=269 64.0 66.0 (3,1680)
+ID=278 64.0 66.0 (3,1950)
+ID=279 64.0 66.0 (3,1980)
+ID=286 63.0 64.0 (3,2190)
+ID=287 63.0 64.0 (3,2220)
+ID=288 63.0 64.0 (3,2250)
+ID=289 62.0 64.0 (3,2280)
+ID=290 62.0 64.0 (3,2310)
+ID=291 61.0 64.0 (3,2340)
+ID=292 61.0 64.0 (3,2370)
+ID=295 62.0 64.0 (3,2460)
+ID=296 62.0 64.0 (3,2490)
+ID=297 62.0 65.0 (3,2520)
+ID=298 62.0 65.0 (3,2550)
+ID=299 63.0 65.0 (3,2580)
+ID=300 63.0 65.0 (3,2610)
+ID=301 63.0 66.0 (3,2640)
+ID=302 63.0 65.0 (3,2670)
+ID=306 63.0 64.0 (3,2790)
+ID=307 63.0 67.0 (3,2820)
+ID=308 63.0 67.0 (3,2850)
+ID=309 63.0 65.0 (3,2880)
+ID=310 63.0 65.0 (3,2910)
+ID=311 63.0 66.0 (3,2940)
+ID=312 64.0 66.0 (3,2970)
+ID=313 64.0 66.0 (3,3000)
+ID=314 63.0 64.0 (3,3030)
+ID=315 63.0 64.0 (3,3060)
+###############################################################

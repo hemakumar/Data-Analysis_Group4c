@@ -1,0 +1,59 @@
+###############################################################
+# Settings:
+# de.lmu.ifi.dbs.elki.workflow.InputStep
+# -db StaticArrayDatabase
+# 
+# de.lmu.ifi.dbs.elki.database.StaticArrayDatabase
+# -dbc FileBasedDatabaseConnection
+# 
+# de.lmu.ifi.dbs.elki.datasource.FileBasedDatabaseConnection
+# -dbc.in /Users/BOX/Desktop/OS/Zproj/zAnalysis/Analysis_2/cluster/hd/COP.csv
+# -dbc.parser DoubleVectorLabelParser
+# 
+# de.lmu.ifi.dbs.elki.datasource.parser.DoubleVectorLabelParser
+# -parser.colsep \s+
+# -parser.quote "
+# -parser.labelIndices [unset]
+# 
+# de.lmu.ifi.dbs.elki.datasource.FileBasedDatabaseConnection
+# -dbc.filter [unset]
+# 
+# de.lmu.ifi.dbs.elki.database.StaticArrayDatabase
+# -db.index [unset]
+# 
+# de.lmu.ifi.dbs.elki.workflow.AlgorithmStep
+# -algorithm clustering.KMeans
+# 
+# de.lmu.ifi.dbs.elki.algorithm.clustering.KMeans
+# -algorithm.distancefunction EuclideanDistanceFunction
+# -kmeans.k 8
+# -kmeans.maxiter 0
+# -kmeans.seed [unset]
+# 
+# de.lmu.ifi.dbs.elki.workflow.EvaluationStep
+# -evaluator [unset]
+###############################################################
+# Cluster: Cluster 6
+# Serialization class: de.lmu.ifi.dbs.elki.data.model.MeanModel
+# Cluster Mean: 0.3886657977217368 0.3182583816238561
+ID=15 0.391119291383872 0.32062181199902845 (1,420)
+ID=16 0.391119291383872 0.3145392235106333 (1,450)
+ID=18 0.3853675370988151 0.32052815385351385 (1,510)
+ID=19 0.3853675370988151 0.32043730267188164 (1,540)
+ID=45 0.3909441008285681 0.3202635311341904 (1,1320)
+ID=46 0.3909441008285681 0.3169047393813263 (1,1350)
+ID=47 0.3851091142490372 0.3181084417434242 (1,1380)
+ID=48 0.37927412766950636 0.3181642884689549 (1,1410)
+ID=49 0.37927412766950636 0.3243721433135106 (1,1440)
+ID=136 0.39041054108460926 0.3182218740820523 (2,870)
+ID=182 0.39076376554174064 0.3227315247895229 (2,2250)
+ID=183 0.39076376554174064 0.3180016591390912 (2,2280)
+ID=187 0.39076376554174064 0.3169047393813263 (2,2400)
+ID=188 0.39076376554174064 0.3145381377492021 (2,2430)
+ID=213 0.3906015263505799 0.3169803959816639 (3,0)
+ID=214 0.3906015263505799 0.3207184092366902 (3,30)
+ID=242 0.3902378592666006 0.31702001188825046 (3,870)
+ID=243 0.3902378592666006 0.3157842798638181 (3,900)
+ID=291 0.38982617586912066 0.3145426844252224 (3,2340)
+ID=292 0.38982617586912066 0.3157842798638181 (3,2370)
+###############################################################

@@ -1,0 +1,63 @@
+###############################################################
+# Settings:
+# de.lmu.ifi.dbs.elki.workflow.InputStep
+# -db StaticArrayDatabase
+# 
+# de.lmu.ifi.dbs.elki.database.StaticArrayDatabase
+# -dbc FileBasedDatabaseConnection
+# 
+# de.lmu.ifi.dbs.elki.datasource.FileBasedDatabaseConnection
+# -dbc.in /Users/BOX/Desktop/OS/Zproj/zAnalysis/Analysis_2/cluster/hd/C_WTD.csv
+# -dbc.parser DoubleVectorLabelParser
+# 
+# de.lmu.ifi.dbs.elki.datasource.parser.DoubleVectorLabelParser
+# -parser.colsep \s+
+# -parser.quote "
+# -parser.labelIndices [unset]
+# 
+# de.lmu.ifi.dbs.elki.datasource.FileBasedDatabaseConnection
+# -dbc.filter [unset]
+# 
+# de.lmu.ifi.dbs.elki.database.StaticArrayDatabase
+# -db.index [unset]
+# 
+# de.lmu.ifi.dbs.elki.workflow.AlgorithmStep
+# -algorithm clustering.KMeans
+# 
+# de.lmu.ifi.dbs.elki.algorithm.clustering.KMeans
+# -algorithm.distancefunction EuclideanDistanceFunction
+# -kmeans.k 9
+# -kmeans.maxiter 0
+# -kmeans.seed [unset]
+# 
+# de.lmu.ifi.dbs.elki.workflow.EvaluationStep
+# -evaluator [unset]
+###############################################################
+# Cluster: Cluster 7
+# Serialization class: de.lmu.ifi.dbs.elki.data.model.MeanModel
+# Cluster Mean: 7.757499999999995 0.4966666666666685
+ID=3 8.5 0.3999999999999915 (1,60)
+ID=4 8.5 0.3999999999999915 (1,90)
+ID=11 8.299999999999997 0.4900000000000091 (1,300)
+ID=12 8.299999999999997 0.4900000000000091 (1,330)
+ID=15 8.0 1.0 (1,420)
+ID=16 7.790000000000006 1.0 (1,450)
+ID=105 7.3999999999999915 1.0 (1,3120)
+ID=106 7.3999999999999915 1.0 (1,3150)
+ID=119 7.099999999999994 0.3999999999999915 (2,360)
+ID=120 7.099999999999994 0.3999999999999915 (2,390)
+ID=123 7.599999999999994 0.4900000000000091 (2,480)
+ID=158 8.290000000000006 0.18999999999999773 (2,1530)
+ID=176 7.700000000000003 0.10000000000000853 (2,2070)
+ID=177 7.700000000000003 0.10000000000000853 (2,2100)
+ID=205 7.599999999999994 0.10000000000000853 (2,2940)
+ID=206 7.700000000000003 0.10000000000000853 (2,2970)
+ID=220 7.700000000000003 0.39000000000000057 (3,210)
+ID=221 7.700000000000003 0.39000000000000057 (3,240)
+ID=245 7.799999999999997 0.10000000000000853 (3,960)
+ID=261 7.8999999999999915 0.4900000000000091 (3,1440)
+ID=262 7.8999999999999915 0.4900000000000091 (3,1470)
+ID=263 7.3999999999999915 0.3999999999999915 (3,1500)
+ID=289 7.3999999999999915 1.0 (3,2280)
+ID=290 7.3999999999999915 1.0 (3,2310)
+###############################################################

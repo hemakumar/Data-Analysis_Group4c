@@ -1,0 +1,72 @@
+###############################################################
+# Settings:
+# de.lmu.ifi.dbs.elki.workflow.InputStep
+# -db StaticArrayDatabase
+# 
+# de.lmu.ifi.dbs.elki.database.StaticArrayDatabase
+# -dbc FileBasedDatabaseConnection
+# 
+# de.lmu.ifi.dbs.elki.datasource.FileBasedDatabaseConnection
+# -dbc.in /Users/BOX/Desktop/OS/Zproj/zAnalysis/Analysis_2/cluster/hd/KW.csv
+# -dbc.parser DoubleVectorLabelParser
+# 
+# de.lmu.ifi.dbs.elki.datasource.parser.DoubleVectorLabelParser
+# -parser.colsep \s+
+# -parser.quote "
+# -parser.labelIndices [unset]
+# 
+# de.lmu.ifi.dbs.elki.datasource.FileBasedDatabaseConnection
+# -dbc.filter [unset]
+# 
+# de.lmu.ifi.dbs.elki.database.StaticArrayDatabase
+# -db.index [unset]
+# 
+# de.lmu.ifi.dbs.elki.workflow.AlgorithmStep
+# -algorithm clustering.KMeans
+# 
+# de.lmu.ifi.dbs.elki.algorithm.clustering.KMeans
+# -algorithm.distancefunction EuclideanDistanceFunction
+# -kmeans.k 11
+# -kmeans.maxiter 0
+# -kmeans.seed [unset]
+# 
+# de.lmu.ifi.dbs.elki.workflow.EvaluationStep
+# -evaluator [unset]
+###############################################################
+# Cluster: Cluster 10
+# Serialization class: de.lmu.ifi.dbs.elki.data.model.MeanModel
+# Cluster Mean: 157.2296969696969 200.50848484848484
+ID=248 158.96 199.5 (3,1050)
+ID=249 158.96 199.5 (3,1080)
+ID=250 158.96 198.7 (3,1110)
+ID=252 158.96 201.09 (3,1170)
+ID=254 158.96 197.91 (3,1230)
+ID=255 158.96 197.91 (3,1260)
+ID=258 158.96 197.91 (3,1350)
+ID=259 158.96 201.88 (3,1380)
+ID=262 158.96 203.47 (3,1470)
+ID=264 158.96 200.29 (3,1530)
+ID=265 158.96 201.88 (3,1560)
+ID=280 158.96 201.88 (3,2010)
+ID=281 158.96 201.88 (3,2040)
+ID=285 158.96 199.5 (3,2160)
+ID=286 158.96 199.5 (3,2190)
+ID=287 158.96 198.7 (3,2220)
+ID=288 156.48 198.7 (3,2250)
+ID=289 156.48 197.91 (3,2280)
+ID=290 156.48 199.5 (3,2310)
+ID=291 156.48 203.47 (3,2340)
+ID=292 156.48 202.67 (3,2370)
+ID=295 156.48 201.88 (3,2460)
+ID=296 156.48 201.88 (3,2490)
+ID=297 153.99 203.47 (3,2520)
+ID=298 153.99 203.47 (3,2550)
+ID=299 153.99 198.7 (3,2580)
+ID=300 153.99 198.7 (3,2610)
+ID=301 153.99 197.91 (3,2640)
+ID=304 153.99 198.7 (3,2730)
+ID=306 156.48 201.09 (3,2790)
+ID=311 156.48 203.47 (3,2940)
+ID=314 156.48 201.88 (3,3030)
+ID=315 156.48 201.88 (3,3060)
+###############################################################

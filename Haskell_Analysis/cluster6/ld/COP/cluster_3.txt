@@ -1,0 +1,51 @@
+###############################################################
+# Settings:
+# de.lmu.ifi.dbs.elki.workflow.InputStep
+# -db StaticArrayDatabase
+# 
+# de.lmu.ifi.dbs.elki.database.StaticArrayDatabase
+# -dbc FileBasedDatabaseConnection
+# 
+# de.lmu.ifi.dbs.elki.datasource.FileBasedDatabaseConnection
+# -dbc.in /Users/BOX/Desktop/OS/Zproj/zAnalysis/Analysis_2/cluster/ld/COP.csv
+# -dbc.parser DoubleVectorLabelParser
+# 
+# de.lmu.ifi.dbs.elki.datasource.parser.DoubleVectorLabelParser
+# -parser.colsep \s+
+# -parser.quote "
+# -parser.labelIndices [unset]
+# 
+# de.lmu.ifi.dbs.elki.datasource.FileBasedDatabaseConnection
+# -dbc.filter [unset]
+# 
+# de.lmu.ifi.dbs.elki.database.StaticArrayDatabase
+# -db.index [unset]
+# 
+# de.lmu.ifi.dbs.elki.workflow.AlgorithmStep
+# -algorithm clustering.KMeans
+# 
+# de.lmu.ifi.dbs.elki.algorithm.clustering.KMeans
+# -algorithm.distancefunction EuclideanDistanceFunction
+# -kmeans.k 6
+# -kmeans.maxiter 0
+# -kmeans.seed [unset]
+# 
+# de.lmu.ifi.dbs.elki.workflow.EvaluationStep
+# -evaluator [unset]
+###############################################################
+# Cluster: Cluster 3
+# Serialization class: de.lmu.ifi.dbs.elki.data.model.MeanModel
+# Cluster Mean: 0.3994753182059818 0.4066230789253141 0.3286209470157452
+ID=4 0.4026073619631902 0.40261407398762983 0.33215903371917466 (1,90)
+ID=5 0.3962167689161554 0.40852575488454707 0.3231175952217762 (1,120)
+ID=6 0.3962167689161554 0.40852575488454707 0.32547971824143795 (1,150)
+ID=17 0.3902378592666006 0.396779087408099 0.33009615844615603 (1,480)
+ID=26 0.4026073619631902 0.40852575488454707 0.3267336389349459 (2,210)
+ID=29 0.40899795501022496 0.40852575488454707 0.3295221928204104 (2,300)
+ID=33 0.4026073619631902 0.40852575488454707 0.3267336389349459 (2,420)
+ID=42 0.40261701056869653 0.4087110351979503 0.32905879506411806 (3,150)
+ID=46 0.39632611977856064 0.4026108704935033 0.3278056305437717 (3,270)
+ID=52 0.40261701056869653 0.4087110351979503 0.33290903750122397 (3,450)
+ID=53 0.39632611977856064 0.4087110351979503 0.33290903750122397 (3,480)
+ID=54 0.39632611977856064 0.4087110351979503 0.32692688725975827 (3,510)
+###############################################################

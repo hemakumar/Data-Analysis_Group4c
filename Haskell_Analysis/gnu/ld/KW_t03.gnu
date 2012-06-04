@@ -12,8 +12,10 @@ set style line 3 lc rgb '#CC6677' pt 0 ps 1 lt 1 lw 4
 set key bottom rmargin title 't03'
 set xlabel 'SEC'
 set ylabel 'KW'
+low = 156.48
+high = 220.16
 set xrange [0:510]
-set yrange [156.48:220.16]
+set yrange [low:high]
 set xtics 60
 plot 'gnu/ld/plot/KW.dat' u 1:($12) t 'C1' w lp ls 1,\
 '' u 1:($13) t 'C2' w lp ls 2,\

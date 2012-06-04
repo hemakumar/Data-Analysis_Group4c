@@ -1,0 +1,77 @@
+###############################################################
+# Settings:
+# de.lmu.ifi.dbs.elki.workflow.InputStep
+# -db StaticArrayDatabase
+# 
+# de.lmu.ifi.dbs.elki.database.StaticArrayDatabase
+# -dbc FileBasedDatabaseConnection
+# 
+# de.lmu.ifi.dbs.elki.datasource.FileBasedDatabaseConnection
+# -dbc.in /Users/BOX/Desktop/OS/Zproj/zAnalysis/Analysis_2/cluster/hd/Loads.csv
+# -dbc.parser DoubleVectorLabelParser
+# 
+# de.lmu.ifi.dbs.elki.datasource.parser.DoubleVectorLabelParser
+# -parser.colsep \s+
+# -parser.quote "
+# -parser.labelIndices [unset]
+# 
+# de.lmu.ifi.dbs.elki.datasource.FileBasedDatabaseConnection
+# -dbc.filter [unset]
+# 
+# de.lmu.ifi.dbs.elki.database.StaticArrayDatabase
+# -db.index [unset]
+# 
+# de.lmu.ifi.dbs.elki.workflow.AlgorithmStep
+# -algorithm clustering.KMeans
+# 
+# de.lmu.ifi.dbs.elki.algorithm.clustering.KMeans
+# -algorithm.distancefunction EuclideanDistanceFunction
+# -kmeans.k 11
+# -kmeans.maxiter 0
+# -kmeans.seed [unset]
+# 
+# de.lmu.ifi.dbs.elki.workflow.EvaluationStep
+# -evaluator [unset]
+###############################################################
+# Cluster: Cluster 2
+# Serialization class: de.lmu.ifi.dbs.elki.data.model.MeanModel
+# Cluster Mean: 62.94736842105263 63.55263157894736
+ID=135 64.0 64.0 (2,840)
+ID=239 64.0 64.0 (3,780)
+ID=241 64.0 64.0 (3,840)
+ID=242 63.0 64.0 (3,870)
+ID=243 63.0 64.0 (3,900)
+ID=244 64.0 64.0 (3,930)
+ID=250 63.0 64.0 (3,1110)
+ID=251 63.0 64.0 (3,1140)
+ID=253 63.0 64.0 (3,1200)
+ID=255 64.0 64.0 (3,1260)
+ID=280 64.0 64.0 (3,2010)
+ID=281 64.0 64.0 (3,2040)
+ID=282 64.0 64.0 (3,2070)
+ID=283 64.0 62.0 (3,2100)
+ID=284 64.0 64.0 (3,2130)
+ID=285 64.0 64.0 (3,2160)
+ID=286 63.0 64.0 (3,2190)
+ID=287 63.0 64.0 (3,2220)
+ID=288 63.0 64.0 (3,2250)
+ID=289 62.0 64.0 (3,2280)
+ID=290 62.0 64.0 (3,2310)
+ID=291 61.0 64.0 (3,2340)
+ID=292 61.0 64.0 (3,2370)
+ID=293 62.0 61.0 (3,2400)
+ID=294 62.0 62.0 (3,2430)
+ID=295 62.0 64.0 (3,2460)
+ID=296 62.0 64.0 (3,2490)
+ID=297 62.0 65.0 (3,2520)
+ID=298 62.0 65.0 (3,2550)
+ID=303 63.0 62.0 (3,2700)
+ID=304 63.0 63.0 (3,2730)
+ID=305 62.0 62.0 (3,2760)
+ID=306 63.0 64.0 (3,2790)
+ID=314 63.0 64.0 (3,3030)
+ID=315 63.0 64.0 (3,3060)
+ID=316 63.0 62.0 (3,3090)
+ID=317 63.0 62.0 (3,3120)
+ID=318 63.0 61.0 (3,3150)
+###############################################################

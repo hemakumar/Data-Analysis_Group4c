@@ -11,8 +11,10 @@ set style line 2 lc rgb '#CC6677' pt 0 ps 1 lt 1 lw 4
 set key bottom rmargin title 't03'
 set xlabel 'SEC'
 set ylabel 'COP'
+low = 0.3038647801728231
+high = 0.41481119990239734
 set xrange [0:3150]
-set yrange [0.3038647801728231:0.41481119990239734]
+set yrange [low:high]
 set xtics 180
 plot 'gnu/hd/plot/COP.dat' u 1:($12) t 'C1' w lp ls 1,\
 '' u 1:($15) t 'C4' w lp ls 2

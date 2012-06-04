@@ -11,8 +11,10 @@ set style line 2 lc rgb '#CC6677' pt 0 ps 1 lt 1 lw 4
 set key bottom rmargin title 't02'
 set xlabel 'SEC'
 set ylabel 'CONDENSER WATER-TEMP DELTA'
+low = 4.599999999999994
+high = 9.299999999999997
 set xrange [0:3150]
-set yrange [4.599999999999994:9.299999999999997]
+set yrange [low:high]
 set xtics 180
 plot 'gnu/hd/plot/C_WTD.dat' u 1:($7) t 'C1' w lp ls 1,\
 '' u 1:($10) t 'C4' w lp ls 2

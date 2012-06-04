@@ -12,8 +12,10 @@ set style line 3 lc rgb '#CC6677' pt 0 ps 1 lt 1 lw 4
 set key bottom rmargin title 't02'
 set xlabel 'SEC'
 set ylabel 'CHILLER WATER-TEMP DELTA'
+low = 6.300000000000004
+high = 7.700000000000003
 set xrange [0:510]
-set yrange [6.300000000000004:7.700000000000003]
+set yrange [low:high]
 set xtics 60
 plot 'gnu/ld/plot/CH_WTD.dat' u 1:($7) t 'C1' w lp ls 1,\
 '' u 1:($8) t 'C2' w lp ls 2,\

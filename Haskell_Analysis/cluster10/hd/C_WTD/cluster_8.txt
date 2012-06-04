@@ -1,0 +1,65 @@
+###############################################################
+# Settings:
+# de.lmu.ifi.dbs.elki.workflow.InputStep
+# -db StaticArrayDatabase
+# 
+# de.lmu.ifi.dbs.elki.database.StaticArrayDatabase
+# -dbc FileBasedDatabaseConnection
+# 
+# de.lmu.ifi.dbs.elki.datasource.FileBasedDatabaseConnection
+# -dbc.in /Users/BOX/Desktop/OS/Zproj/zAnalysis/Analysis_2/cluster/hd/C_WTD.csv
+# -dbc.parser DoubleVectorLabelParser
+# 
+# de.lmu.ifi.dbs.elki.datasource.parser.DoubleVectorLabelParser
+# -parser.colsep \s+
+# -parser.quote "
+# -parser.labelIndices [unset]
+# 
+# de.lmu.ifi.dbs.elki.datasource.FileBasedDatabaseConnection
+# -dbc.filter [unset]
+# 
+# de.lmu.ifi.dbs.elki.database.StaticArrayDatabase
+# -db.index [unset]
+# 
+# de.lmu.ifi.dbs.elki.workflow.AlgorithmStep
+# -algorithm clustering.KMeans
+# 
+# de.lmu.ifi.dbs.elki.algorithm.clustering.KMeans
+# -algorithm.distancefunction EuclideanDistanceFunction
+# -kmeans.k 10
+# -kmeans.maxiter 0
+# -kmeans.seed [unset]
+# 
+# de.lmu.ifi.dbs.elki.workflow.EvaluationStep
+# -evaluator [unset]
+###############################################################
+# Cluster: Cluster 8
+# Serialization class: de.lmu.ifi.dbs.elki.data.model.MeanModel
+# Cluster Mean: 7.126153846153849 7.5880769230769225
+ID=82 6.799999999999997 7.299999999999997 (1,2430)
+ID=117 7.400000000000006 7.599999999999994 (2,300)
+ID=121 7.200000000000003 7.799999999999997 (2,420)
+ID=122 7.1000000000000085 7.799999999999997 (2,450)
+ID=175 7.5 7.5 (2,2040)
+ID=201 7.490000000000009 7.700000000000003 (2,2820)
+ID=202 7.490000000000009 7.599999999999994 (2,2850)
+ID=211 7.1000000000000085 8.299999999999997 (2,3120)
+ID=212 6.900000000000006 8.200000000000003 (2,3150)
+ID=215 7.099999999999994 8.299999999999997 (3,60)
+ID=216 7.0 8.0 (3,90)
+ID=223 7.200000000000003 7.189999999999998 (3,300)
+ID=225 6.700000000000003 7.599999999999994 (3,360)
+ID=226 6.700000000000003 7.599999999999994 (3,390)
+ID=229 6.900000000000006 7.5 (3,480)
+ID=264 7.0 7.3999999999999915 (3,1530)
+ID=272 7.099999999999994 7.299999999999997 (3,1770)
+ID=273 7.099999999999994 7.299999999999997 (3,1800)
+ID=274 7.200000000000003 7.299999999999997 (3,1830)
+ID=275 7.200000000000003 7.3999999999999915 (3,1860)
+ID=282 7.300000000000011 7.5 (3,2070)
+ID=283 7.6000000000000085 7.5 (3,2100)
+ID=288 7.3999999999999915 7.299999999999997 (3,2250)
+ID=311 7.0 7.189999999999998 (3,2940)
+ID=312 6.699999999999989 7.5 (3,2970)
+ID=317 7.099999999999994 7.609999999999999 (3,3120)
+###############################################################

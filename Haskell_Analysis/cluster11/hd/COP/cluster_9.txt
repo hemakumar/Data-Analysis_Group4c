@@ -1,0 +1,67 @@
+###############################################################
+# Settings:
+# de.lmu.ifi.dbs.elki.workflow.InputStep
+# -db StaticArrayDatabase
+# 
+# de.lmu.ifi.dbs.elki.database.StaticArrayDatabase
+# -dbc FileBasedDatabaseConnection
+# 
+# de.lmu.ifi.dbs.elki.datasource.FileBasedDatabaseConnection
+# -dbc.in /Users/BOX/Desktop/OS/Zproj/zAnalysis/Analysis_2/cluster/hd/COP.csv
+# -dbc.parser DoubleVectorLabelParser
+# 
+# de.lmu.ifi.dbs.elki.datasource.parser.DoubleVectorLabelParser
+# -parser.colsep \s+
+# -parser.quote "
+# -parser.labelIndices [unset]
+# 
+# de.lmu.ifi.dbs.elki.datasource.FileBasedDatabaseConnection
+# -dbc.filter [unset]
+# 
+# de.lmu.ifi.dbs.elki.database.StaticArrayDatabase
+# -db.index [unset]
+# 
+# de.lmu.ifi.dbs.elki.workflow.AlgorithmStep
+# -algorithm clustering.KMeans
+# 
+# de.lmu.ifi.dbs.elki.algorithm.clustering.KMeans
+# -algorithm.distancefunction EuclideanDistanceFunction
+# -kmeans.k 11
+# -kmeans.maxiter 0
+# -kmeans.seed [unset]
+# 
+# de.lmu.ifi.dbs.elki.workflow.EvaluationStep
+# -evaluator [unset]
+###############################################################
+# Cluster: Cluster 9
+# Serialization class: de.lmu.ifi.dbs.elki.data.model.MeanModel
+# Cluster Mean: 0.41006383887471576 0.31758102466817123
+ID=1 0.4081407534057691 0.3155737704918033 (1,0)
+ID=25 0.40862928910522206 0.319095591922323 (1,720)
+ID=26 0.4146385433567694 0.319095591922323 (1,750)
+ID=27 0.4146385433567694 0.3190437674126 (1,780)
+ID=28 0.4146385433567694 0.3180016591390912 (1,810)
+ID=51 0.4088206144697721 0.3169419900115252 (1,1500)
+ID=54 0.4088206144697721 0.32052815385351385 (1,1590)
+ID=100 0.4087110351979503 0.31570639305445936 (1,2970)
+ID=101 0.41481119990239734 0.3169047393813263 (1,3000)
+ID=103 0.41481119990239734 0.3180016591390912 (1,3060)
+ID=106 0.4087110351979503 0.3180016591390912 (1,3150)
+ID=114 0.4088206144697721 0.3168685927306617 (2,210)
+ID=115 0.4088206144697721 0.3168685927306617 (2,240)
+ID=146 0.4088206144697721 0.3181642884689549 (2,1170)
+ID=148 0.4088206144697721 0.3207184092366902 (2,1230)
+ID=149 0.4088206144697721 0.3194574138693665 (2,1260)
+ID=151 0.4087110351979503 0.31930610494209594 (2,1320)
+ID=152 0.4087110351979503 0.31930610494209594 (2,1350)
+ID=179 0.41481119990239734 0.31453708346628984 (2,2160)
+ID=206 0.4087110351979503 0.3157842798638181 (2,2970)
+ID=207 0.4087110351979503 0.3157842798638181 (2,3000)
+ID=222 0.4088206144697721 0.3157249893972951 (3,270)
+ID=259 0.40890790135883237 0.31702001188825046 (3,1380)
+ID=260 0.40890790135883237 0.3157249893972951 (3,1410)
+ID=271 0.40890790135883237 0.31916369859845506 (3,1740)
+ID=304 0.4091174751607247 0.3170608958228485 (3,2730)
+ID=312 0.40899795501022496 0.3169419900115252 (3,2970)
+ID=313 0.40899795501022496 0.3169419900115252 (3,3000)
+###############################################################

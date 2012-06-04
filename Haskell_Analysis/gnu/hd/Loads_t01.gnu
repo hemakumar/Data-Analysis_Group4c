@@ -11,8 +11,10 @@ set style line 2 lc rgb '#CC6677' pt 0 ps 1 lt 1 lw 4
 set key bottom rmargin title 't01'
 set xlabel 'SEC'
 set ylabel 'Loads'
+low = 61.0
+high = 77.0
 set xrange [0:3150]
-set yrange [61.0:77.0]
+set yrange [low:high]
 set xtics 180
 plot 'gnu/hd/plot/Loads.dat' u 1:($2) t 'C1' w lp ls 1,\
 '' u 1:($5) t 'C4' w lp ls 2

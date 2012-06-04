@@ -117,8 +117,10 @@ generate_gnu isLD name dexs racks trial label x_range y_range = do
   hPutStrLn outh $ "set key bottom rmargin title \'"++trial++"\'"
   hPutStrLn outh "set xlabel \'SEC\'"
   hPutStrLn outh $ "set ylabel \'"++label++"\'"
+  hPutStrLn outh $ "low = "++(show $ fst y_range)
+  hPutStrLn outh $ "high = "++(show $ snd y_range)
   hPutStrLn outh $ "set xrange ["++(show $ fst x_range)++":"++(show $ snd x_range)++"]"
-  hPutStrLn outh $ "set yrange ["++(show $ fst y_range)++":"++(show $ snd y_range)++"]"
+  hPutStrLn outh $ "set yrange [low:high]"
   if isLD then hPutStrLn outh "set xtics 60"
   else hPutStrLn outh "set xtics 180"
   let dps = zip3 dexs racks [1..length racks]
@@ -134,11 +136,7 @@ generate_gnu isLD name dexs racks trial label x_range y_range = do
   hPutStrLn outh $ "\'\' u 1:($"++show i_n++") t \'"++t_n++"\' w lp ls "++show c_n
   hClose outh
 -------------------------------------------------------------------------------
--- | * default k = 3; just a prototype for automation
--- | * a better way would be to write a parser for the original gnu plot
--- | * transform it into the overlayed cluster version depending on k
--------------------------------------------------------------------------------
-generate_cluster isLD name dexs racks trial label x_range y_range = do
+generate_cluster isLD name dexs racks trial label x_range y_range cluster_k = do
   createDirectoryIfMissing True "cluster"
   if isLD then mapM_ (createDirectoryIfMissing True) ["cluster/ld","cluster/ld/"++name]
   else mapM_ (createDirectoryIfMissing True) ["cluster/hd","cluster/hd/"++name]
@@ -166,9 +164,7 @@ generate_cluster isLD name dexs racks trial label x_range y_range = do
   hPutStrLn outh $ "set yrange [low:high]"
   if isLD then hPutStrLn outh "set xtics 60"
   else hPutStrLn outh "set xtics 180"
-  hPutStrLn outh $ "k0(x) = (x==0?high:low)"
-  hPutStrLn outh $ "k1(x) = (x==1?high:low)"
-  hPutStrLn outh $ "k2(x) = (x==2?high:low)"
+  forM_ [0..pred cluster_k] $ \k -> hPutStrLn outh $ "k"++show k++"(x) = (x=="++show k++"?high:low)"
   hPutStrLn outh $ "set style fill transparent solid 0.25"
   hPutStrLn outh $ "set boxwidth 1 relative"
   let dps = zip3 dexs racks [1..length racks]
@@ -178,9 +174,9 @@ generate_cluster isLD name dexs racks trial label x_range y_range = do
       box = if isLD then "\'gnu/ld/plot/" else "\'gnu/hd/plot/"
       box' = if isLD then "plot \'cluster/ld/"++name++"/" else "plot \'cluster/hd/"++name++"/"
   hPutStr outh $ box'++trial++".dat\'"
-  hPutStrLn outh $ " u 1:(k0($2)) t \'K_1\' w boxes lc rgb \'#99C7EC\',\\"
-  hPutStrLn outh $ "\'\' u 1:(k1($2)) t \'K_2\' w boxes lc rgb \'#FFFAD2\',\\"
-  hPutStrLn outh $ "\'\' u 1:(k2($2)) t \'K_3\' w boxes lc rgb \'#F5A275\',\\"
+  hPutStrLn outh $ " u 1:(k0($2)) t \'K1\' w boxes lc rgb \'"++((shade cluster_k)!!0)++"\',\\"
+  forM_ (zip [1..pred cluster_k] $ tail $ shade cluster_k) $ \(k,clr) -> do
+    hPutStrLn outh $ "\'\' u 1:(k"++show k++"($2)) t \'K"++(show $ succ k)++"\' w boxes lc rgb \'"++clr++"\',\\"
   hPutStr outh $ box++name++".dat\'"
   hPutStrLn outh $ " u 1:($"++show i_1++") t \'"++t_1++"\' w lp ls "++show c_1++",\\"
   forM_ lk $ \(i_k,t_k,c_k) ->
@@ -198,6 +194,7 @@ data Batch =
         ,x_range :: (Int, Int)                    -- ^ x-range for gnuplot file
         ,y_range :: (Double, Double)              -- ^ y-range for gnuplot file
         ,fs :: [Int]                            -- ^ column step for each trial
+        ,cluster_k :: Int                        -- ^ number of clusters wanted
         } deriving (Show)
 -------------------------------------------------------------------------------
 -------------------------------------------------------------------------------

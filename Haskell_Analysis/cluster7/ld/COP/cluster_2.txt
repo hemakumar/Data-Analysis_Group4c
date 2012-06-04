@@ -1,0 +1,55 @@
+###############################################################
+# Settings:
+# de.lmu.ifi.dbs.elki.workflow.InputStep
+# -db StaticArrayDatabase
+# 
+# de.lmu.ifi.dbs.elki.database.StaticArrayDatabase
+# -dbc FileBasedDatabaseConnection
+# 
+# de.lmu.ifi.dbs.elki.datasource.FileBasedDatabaseConnection
+# -dbc.in /Users/BOX/Desktop/OS/Zproj/zAnalysis/Analysis_2/cluster/ld/COP.csv
+# -dbc.parser DoubleVectorLabelParser
+# 
+# de.lmu.ifi.dbs.elki.datasource.parser.DoubleVectorLabelParser
+# -parser.colsep \s+
+# -parser.quote "
+# -parser.labelIndices [unset]
+# 
+# de.lmu.ifi.dbs.elki.datasource.FileBasedDatabaseConnection
+# -dbc.filter [unset]
+# 
+# de.lmu.ifi.dbs.elki.database.StaticArrayDatabase
+# -db.index [unset]
+# 
+# de.lmu.ifi.dbs.elki.workflow.AlgorithmStep
+# -algorithm clustering.KMeans
+# 
+# de.lmu.ifi.dbs.elki.algorithm.clustering.KMeans
+# -algorithm.distancefunction EuclideanDistanceFunction
+# -kmeans.k 7
+# -kmeans.maxiter 0
+# -kmeans.seed [unset]
+# 
+# de.lmu.ifi.dbs.elki.workflow.EvaluationStep
+# -evaluator [unset]
+###############################################################
+# Cluster: Cluster 2
+# Serialization class: de.lmu.ifi.dbs.elki.data.model.MeanModel
+# Cluster Mean: 0.40500801856588453 0.4063418911746486 0.319677785838886
+ID=10 0.4026073619631902 0.40260509177027826 0.3231175952217762 (1,270)
+ID=11 0.40899795501022496 0.40852575488454707 0.3231175952217762 (1,300)
+ID=12 0.40899795501022496 0.40852575488454707 0.3157249893972951 (1,330)
+ID=13 0.40262636273538155 0.40852575488454707 0.3181084417434242 (1,360)
+ID=14 0.40262636273538155 0.40852575488454707 0.319095591922323 (1,390)
+ID=22 0.4026073619631902 0.40261407398762983 0.32142529157865735 (2,90)
+ID=27 0.4026073619631902 0.40852575488454707 0.32197344957400437 (2,240)
+ID=28 0.40899795501022496 0.40852575488454707 0.32323835098712017 (2,270)
+ID=31 0.40899795501022496 0.40260509177027826 0.3157249893972951 (2,360)
+ID=32 0.4026073619631902 0.40852575488454707 0.3169047393813263 (2,390)
+ID=37 0.4026073619631902 0.4026108704935033 0.32249273255813954 (3,0)
+ID=40 0.40899795501022496 0.4087110351979503 0.32052815385351385 (3,90)
+ID=41 0.40899795501022496 0.4087110351979503 0.3168685927306617 (3,120)
+ID=43 0.40261701056869653 0.4087110351979503 0.31805425631431244 (3,180)
+ID=44 0.40261701056869653 0.4026108704935033 0.31916369859845506 (3,210)
+ID=51 0.40261701056869653 0.4026108704935033 0.31930610494209594 (3,420)
+###############################################################

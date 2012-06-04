@@ -1,0 +1,47 @@
+###############################################################
+# Settings:
+# de.lmu.ifi.dbs.elki.workflow.InputStep
+# -db StaticArrayDatabase
+# 
+# de.lmu.ifi.dbs.elki.database.StaticArrayDatabase
+# -dbc FileBasedDatabaseConnection
+# 
+# de.lmu.ifi.dbs.elki.datasource.FileBasedDatabaseConnection
+# -dbc.in /Users/BOX/Desktop/OS/Zproj/zAnalysis/Analysis_2/cluster/ld/COP.csv
+# -dbc.parser DoubleVectorLabelParser
+# 
+# de.lmu.ifi.dbs.elki.datasource.parser.DoubleVectorLabelParser
+# -parser.colsep \s+
+# -parser.quote "
+# -parser.labelIndices [unset]
+# 
+# de.lmu.ifi.dbs.elki.datasource.FileBasedDatabaseConnection
+# -dbc.filter [unset]
+# 
+# de.lmu.ifi.dbs.elki.database.StaticArrayDatabase
+# -db.index [unset]
+# 
+# de.lmu.ifi.dbs.elki.workflow.AlgorithmStep
+# -algorithm clustering.KMeans
+# 
+# de.lmu.ifi.dbs.elki.algorithm.clustering.KMeans
+# -algorithm.distancefunction EuclideanDistanceFunction
+# -kmeans.k 5
+# -kmeans.maxiter 0
+# -kmeans.seed [unset]
+# 
+# de.lmu.ifi.dbs.elki.workflow.EvaluationStep
+# -evaluator [unset]
+###############################################################
+# Cluster: Cluster 0
+# Serialization class: de.lmu.ifi.dbs.elki.data.model.MeanModel
+# Cluster Mean: 0.394852300068738 0.3937279957581815 0.32033186773746086
+ID=16 0.3902378592666006 0.396779087408099 0.3276042161238249 (1,450)
+ID=17 0.3902378592666006 0.396779087408099 0.33009615844615603 (1,480)
+ID=18 0.3902378592666006 0.396779087408099 0.3168685927306617 (1,510)
+ID=19 0.3902378592666006 0.396779087408099 0.31805425631431244 (2,0)
+ID=34 0.4026073619631902 0.3848431024274719 0.3181084417434242 (2,450)
+ID=35 0.4026073619631902 0.3848431024274719 0.3181084417434242 (2,480)
+ID=48 0.39632611977856064 0.3965107057890563 0.3181084417434242 (3,330)
+ID=49 0.39632611977856064 0.3965107057890563 0.31570639305445936 (3,360)
+###############################################################

@@ -1,0 +1,68 @@
+###############################################################
+# Settings:
+# de.lmu.ifi.dbs.elki.workflow.InputStep
+# -db StaticArrayDatabase
+# 
+# de.lmu.ifi.dbs.elki.database.StaticArrayDatabase
+# -dbc FileBasedDatabaseConnection
+# 
+# de.lmu.ifi.dbs.elki.datasource.FileBasedDatabaseConnection
+# -dbc.in /Users/BOX/Desktop/OS/Zproj/zAnalysis/Analysis_2/cluster/hd/Loads.csv
+# -dbc.parser DoubleVectorLabelParser
+# 
+# de.lmu.ifi.dbs.elki.datasource.parser.DoubleVectorLabelParser
+# -parser.colsep \s+
+# -parser.quote "
+# -parser.labelIndices [unset]
+# 
+# de.lmu.ifi.dbs.elki.datasource.FileBasedDatabaseConnection
+# -dbc.filter [unset]
+# 
+# de.lmu.ifi.dbs.elki.database.StaticArrayDatabase
+# -db.index [unset]
+# 
+# de.lmu.ifi.dbs.elki.workflow.AlgorithmStep
+# -algorithm clustering.KMeans
+# 
+# de.lmu.ifi.dbs.elki.algorithm.clustering.KMeans
+# -algorithm.distancefunction EuclideanDistanceFunction
+# -kmeans.k 8
+# -kmeans.maxiter 0
+# -kmeans.seed [unset]
+# 
+# de.lmu.ifi.dbs.elki.workflow.EvaluationStep
+# -evaluator [unset]
+###############################################################
+# Cluster: Cluster 7
+# Serialization class: de.lmu.ifi.dbs.elki.data.model.MeanModel
+# Cluster Mean: 66.27586206896552 69.44827586206897
+ID=14 68.0 70.0 (1,390)
+ID=20 67.0 69.0 (1,570)
+ID=25 68.0 70.0 (1,720)
+ID=43 68.0 70.0 (1,1260)
+ID=45 67.0 70.0 (1,1320)
+ID=61 66.0 69.0 (1,1800)
+ID=62 66.0 69.0 (1,1830)
+ID=88 66.0 69.0 (1,2610)
+ID=89 66.0 69.0 (1,2640)
+ID=90 66.0 69.0 (1,2670)
+ID=98 66.0 69.0 (1,2910)
+ID=99 67.0 69.0 (1,2940)
+ID=104 68.0 70.0 (1,3090)
+ID=106 67.0 69.0 (1,3150)
+ID=174 66.0 69.0 (2,2010)
+ID=176 67.0 69.0 (2,2070)
+ID=177 67.0 70.0 (2,2100)
+ID=182 66.0 69.0 (2,2250)
+ID=183 66.0 69.0 (2,2280)
+ID=184 67.0 69.0 (2,2310)
+ID=189 66.0 69.0 (2,2460)
+ID=199 65.0 71.0 (2,2760)
+ID=200 65.0 71.0 (2,2790)
+ID=201 66.0 71.0 (2,2820)
+ID=202 66.0 70.0 (2,2850)
+ID=203 66.0 69.0 (2,2880)
+ID=270 64.0 69.0 (3,1710)
+ID=271 65.0 69.0 (3,1740)
+ID=273 64.0 69.0 (3,1800)
+###############################################################
