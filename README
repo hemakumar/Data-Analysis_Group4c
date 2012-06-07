@@ -19,7 +19,7 @@ There are two approaches followed for this analysis:
 More information can be found at the following url:
 http://perftrack.cs.pdx.edu/
 
-We have modified it further and tried t incorporate clustering into perftrack by lcoupling ELKI into it. We have also used python scripts to parse the outpu files for perftrack, The python scripts can be accessed at;
+We have modified it further and tried to incorporate clustering into perftrack by coupling ELKI into it. We have also used python scripts to parse the outpu files for perftrack, The python scripts can be accessed at;
 https://github.com/hemakumar/Data-Analysis_Group4c/tree/master/Perftrack_ELKI
 
 2.The second approach we have used is to make custom scripts is haskell and incorporated it with ELKI. We also couple it get automated reports.
