@@ -1,0 +1,197 @@
+\documentclass{report}
+\usepackage{textcomp,amsmath,appendix}
+\usepackage{graphicx}
+%\usepackage{makeidx}
+\usepackage[colorlinks=true]{hyperref}
+\usepackage{tex4ht}
+%\usepackage[style=authoryear,backend=biber]{biblatex}
+
+
+\title{Addendum : Project 4C \\Integrated Analysis of Room Performance}
+\author{Michael Novak} %, Shaun Brandt, Mandar Patil, Hema Kumar, and Yu Yang}
+
+
+\begin{document}
+
+\maketitle
+%\pagestyle{empty}
+
+
+
+
+\begin{abstract}
+Using postmortem datasets collected at the PNNL's Energy Smart Data Center (ESDC) facility, an integrated analysis of room performance is conducted. 
+Overall room performance, concerning power and cooling, is best captured by chiller metrics.
+Temporal data-mining techniques are used in an effort to possibly characterize sustainability measures of the patterns mined from these metrics. 
+
+
+%An analysis suite, written in Haskell and {\tt Gnuplot},
+%is used to produce a novel visualization of clustering overlays on the time-series data for five chiller metrics, in an attempt to discover `motifs'.
+
+ \end{abstract}
+
+
+
+\chapter*{Introduction}
+\input{indexintro.tex}
+
+%\nocite{*}
+\bibliographystyle{plain}
+\bibliography{index}
+
+\tableofcontents
+
+\appendix
+
+\part{Low-Density Workload Visualizations}
+\chapter{Metrics : Power Unit, Thermal Management Unit (TMU), and Chiller}
+\begin{figure}[!h]
+\centerline{\bfseries\large Low-Density Workload : Trials 1--3}\\
+\fbox{\includegraphics[bb=0 0 640 480, width=5in]{gnu/ld/plot/PowerKWH_t01.png}}
+\fbox{\includegraphics[bb=0 0 640 480, width=5in]{gnu/ld/plot/PowerKWH_t02.png}}
+\fbox{\includegraphics[bb=0 0 640 480, width=5in]{gnu/ld/plot/PowerKWH_t03.png}}
+\caption{Racks A1, A3, A4, B1--4; Power-unit kWh increase (7.63\textcent{} per kWh, in Oregon).}
+\end{figure}
+\begin{figure}[!h]
+\centerline{\bfseries\large Low-Density Workload : Trials 1--3}\\
+\fbox{\includegraphics[bb=0 0 640 480, width=5in]{gnu/ld/plot/TMU_WTD_t01.png}}
+\fbox{\includegraphics[bb=0 0 640 480, width=5in]{gnu/ld/plot/TMU_WTD_t02.png}}
+\fbox{\includegraphics[bb=0 0 640 480, width=5in]{gnu/ld/plot/TMU_WTD_t03.png}}
+\caption{Racks A1, B1--4; TMU water-temperature delta, which is obtained by subtracting inlet from outlet temperatures.}
+\end{figure}
+\begin{figure}[!h]
+\centerline{\bfseries\large Low-Density Workload : Trials 1--3}\\
+\fbox{\includegraphics[bb=0 0 640 480, width=5in]{gnu/ld/plot/ManifoldPress_t01.png}}
+\fbox{\includegraphics[bb=0 0 640 480, width=5in]{gnu/ld/plot/ManifoldPress_t02.png}}
+\fbox{\includegraphics[bb=0 0 640 480, width=5in]{gnu/ld/plot/ManifoldPress_t03.png}}
+\caption{Racks A1, B1--4; TMU manifold pressure.}
+\end{figure}
+\begin{figure}[!h]
+\centerline{\bfseries\large Low-Density Workload : Trials 1--3}\\
+\fbox{\includegraphics[bb=0 0 640 480, width=5in]{gnu/ld/plot/C_WTD_t01.png}}
+\fbox{\includegraphics[bb=0 0 640 480, width=5in]{gnu/ld/plot/C_WTD_t02.png}}
+\fbox{\includegraphics[bb=0 0 640 480, width=5in]{gnu/ld/plot/C_WTD_t03.png}}
+\caption{Chillers C1,C2, and C4; Condenser water-temperature delta, which is obtained by subtracting entering from leaving water temperatures ($LCWT-ECWT$).}
+\end{figure}
+\begin{figure}[!h]
+\centerline{\bfseries\large Low-Density Workload : Trials 1--3}\\
+\fbox{\includegraphics[bb=0 0 640 480, width=5in]{gnu/ld/plot/CH_WTD_t01.png}}
+\fbox{\includegraphics[bb=0 0 640 480, width=5in]{gnu/ld/plot/CH_WTD_t02.png}}
+\fbox{\includegraphics[bb=0 0 640 480, width=5in]{gnu/ld/plot/CH_WTD_t03.png}}
+\caption{Chillers C1,C2, and C4; Chilled water-temperature delta, which is obtained by subtracting leaving from entering water temperatures ($ECHWT-LCHWT$).}
+\end{figure}
+\begin{figure}[!h]
+\centerline{\bfseries\large Low-Density Workload : Trials 1--3}\\
+\fbox{\includegraphics[bb=0 0 640 480, width=5in]{gnu/ld/plot/COP_t01.png}}
+\fbox{\includegraphics[bb=0 0 640 480, width=5in]{gnu/ld/plot/COP_t02.png}}
+\fbox{\includegraphics[bb=0 0 640 480, width=5in]{gnu/ld/plot/COP_t03.png}}
+\caption{Chillers C1,C2, and C4; Coefficient of performance (COP), which is obtained from dividing Loads by KW.}
+\end{figure}
+\begin{figure}[!h]
+\centerline{\bfseries\large Low-Density Workload : Trials 1--3}\\
+\fbox{\includegraphics[bb=0 0 640 480, width=5in]{gnu/ld/plot/KW_t01.png}}
+\fbox{\includegraphics[bb=0 0 640 480, width=5in]{gnu/ld/plot/KW_t02.png}}
+\fbox{\includegraphics[bb=0 0 640 480, width=5in]{gnu/ld/plot/KW_t03.png}}
+\caption{Chillers C1,C2, and C4; Kilowatts (KW). This is the amount of heat that is generated at the data center---approximately equivalent to the power consumed.}
+\end{figure}
+\begin{figure}[!h]
+\centerline{\bfseries\large Low-Density Workload : Trials 1--3}\\
+\fbox{\includegraphics[bb=0 0 640 480, width=5in]{gnu/ld/plot/Loads_t01.png}}
+\fbox{\includegraphics[bb=0 0 640 480, width=5in]{gnu/ld/plot/Loads_t02.png}}
+\fbox{\includegraphics[bb=0 0 640 480, width=5in]{gnu/ld/plot/Loads_t03.png}}
+\caption{Chillers C1,C2, and C4; Loads---cooling loads on the chiller units.}
+\end{figure}
+\chapter{Chiller Metric Clustering : Condenser Water-Temperature Delta}
+\input{htlatex/ld_C_WTD.tex}
+\chapter{Chiller Metric Clustering : Chilled Water-Temperature Delta}
+\input{htlatex/ld_CH_WTD.tex}
+\chapter{Chiller Metric Clustering : Coefficient of Performance (COP)}
+\input{htlatex/ld_COP.tex}
+\chapter{Chiller Metric Clustering : KW}
+\input{htlatex/ld_KW.tex}
+\chapter{Chiller Metric Clustering : Loads}
+\input{htlatex/ld_Loads.tex}
+\part{High-Density Workload Visualizations}
+\chapter{Metrics : Power Unit and Chiller}
+\begin{figure}[!h]
+\centerline{\bfseries\large High-Density Workload : Trials 1--3}\\
+\fbox{\includegraphics[bb=0 0 1152 720, width=15in]{gnu/hd/plot/PowerKWH_t01.png}}
+\fbox{\includegraphics[bb=0 0 1152 720, width=15in]{gnu/hd/plot/PowerKWH_t02.png}}
+\fbox{\includegraphics[bb=0 0 1152 720, width=15in]{gnu/hd/plot/PowerKWH_t03.png}}
+\caption{Racks A1, A3, A4, B1--4; Power-unit kWh increase (7.63\textcent{} per kWh, in Oregon).}
+\end{figure}
+\begin{figure}[!h]
+\centerline{\bfseries\large High-Density Workload : Trials 1--3}\\
+\fbox{\includegraphics[bb=0 0 1152 720, width=15in]{gnu/hd/plot/C_WTD_t01.png}}
+\fbox{\includegraphics[bb=0 0 1152 720, width=15in]{gnu/hd/plot/C_WTD_t02.png}}
+\fbox{\includegraphics[bb=0 0 1152 720, width=15in]{gnu/hd/plot/C_WTD_t03.png}}
+\caption{Chillers C1 and C4; Condenser water-temperature delta, which is obtained by subtracting entering from leaving water temperatures ($LCWT-ECWT$).}
+\end{figure}
+\begin{figure}[!h]
+\centerline{\bfseries\large High-Density Workload : Trials 1--3}\\
+\fbox{\includegraphics[bb=0 0 1152 720, width=15in]{gnu/hd/plot/CH_WTD_t01.png}}
+\fbox{\includegraphics[bb=0 0 1152 720, width=15in]{gnu/hd/plot/CH_WTD_t02.png}}
+\fbox{\includegraphics[bb=0 0 1152 720, width=15in]{gnu/hd/plot/CH_WTD_t03.png}}
+\caption{Chillers C1 and C4; Chilled water-temperature delta, which is obtained by subtracting leaving from entering water temperatures ($ECHWT-LCHWT$).}
+\end{figure}
+\begin{figure}[!h]
+\centerline{\bfseries\large High-Density Workload : Trials 1--3}\\
+\fbox{\includegraphics[bb=0 0 1152 720, width=15in]{gnu/hd/plot/COP_t01.png}}
+\fbox{\includegraphics[bb=0 0 1152 720, width=15in]{gnu/hd/plot/COP_t02.png}}
+\fbox{\includegraphics[bb=0 0 1152 720, width=15in]{gnu/hd/plot/COP_t03.png}}
+\caption{Chillers C1 and C4; Coefficient of performance (COP), which is obtained from dividing Loads by KW.}
+\end{figure}
+\begin{figure}[!h]
+\centerline{\bfseries\large High-Density Workload : Trials 1--3}\\
+\fbox{\includegraphics[bb=0 0 1152 720, width=15in]{gnu/hd/plot/KW_t01.png}}
+\fbox{\includegraphics[bb=0 0 1152 720, width=15in]{gnu/hd/plot/KW_t02.png}}
+\fbox{\includegraphics[bb=0 0 1152 720, width=15in]{gnu/hd/plot/KW_t03.png}}
+\caption{Chillers C1 and C4; Kilowatts (KW). This is the amount of heat that is generated at the data center---approximately equivalent to the power consumed.}
+\end{figure}
+\begin{figure}[!h]
+\centerline{\bfseries\large High-Density Workload : Trials 1--3}\\
+\fbox{\includegraphics[bb=0 0 1152 720, width=15in]{gnu/hd/plot/Loads_t01.png}}
+\fbox{\includegraphics[bb=0 0 1152 720, width=15in]{gnu/hd/plot/Loads_t02.png}}
+\fbox{\includegraphics[bb=0 0 1152 720, width=15in]{gnu/hd/plot/Loads_t03.png}}
+\caption{Chillers C1 and C4; Loads---cooling loads on the chiller units.}
+\end{figure}
+\chapter{Chiller Metric Clustering : Condenser Water-Temperature Delta}
+\input{htlatex/hd_C_WTD.tex}
+\chapter{Chiller Metric Clustering : Chilled Water-Temperature Delta}
+\input{htlatex/hd_CH_WTD.tex}
+\chapter{Chiller Metric Clustering : Coefficient of Performance (COP)}
+\input{htlatex/hd_COP.tex}
+\chapter{Chiller Metric Clustering : KW}
+\input{htlatex/hd_KW.tex}
+\chapter{Chiller Metric Clustering : Loads}
+\input{htlatex/hd_Loads.tex}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{figure}[!h]
+   \centerline{\bfseries\large Low-Density Workload : Trials 1--3}
+   \fbox{\includegraphics[bb=0 0 640 480, width=5in]{thing/C_WTD_t01.png}}
+   \fbox{\includegraphics[bb=0 0 640 480, width=5in]{thing/C_WTD_t01.png}}
+   \fbox{\includegraphics[bb=0 0 640 480, width=5in]{thing/C_WTD_t01.png}}
+ \caption{Chiller units C1, C2 and C4; EM clustering with $k=3$.}
+\end{figure}
+
+\chapter{High-Density Workload Chiller-Metric : Condenser Water-Temperature Delta}
+\begin{figure}[!h]
+   \centerline{\bfseries\large High-Density Workload : Trial 1}
+   \fbox{\includegraphics[bb=0 0 1152 720,width=15in]{hd/C_WTD_t01.png}}
+ \caption{Chiller units C1 and C4; EM clustering with $k=3$.}
+\end{figure}
+

@@ -1,12 +1,17 @@
 -------------------------------------------------------------------------------
-(i)  Run the program as an executable:
-     $ ghc --make analysis
-     $ ./analysis <alg> <k>
+Run the program as an executable:
 -------------------------------------------------------------------------------
-* Examples:
-  $ ./analysis em 3
-  $ ./analysis k-means 9
--------------------------------------------------------------------------------
+
+  $ ghc --make analysis
+  $ ./analysis <alg> <k>
+
+Examples: $ ./analysis em 3
+          $ ./analysis k-means 9
+
+Note: Depending on your Haskell installation, you may need to install 
+      the vector library.
+      $ cabal install vector
+
 * EM works best with a cluster size of 3
 
 * K-means works best with cluster size > 3
@@ -15,37 +20,46 @@
   change the cluster directory to a different name before executing; 
   otherwise, it will be overwritten.
  
-* I've included the following output directories
-  * cluster3  : em 3
-  * cluster4  : k-means 4
-  * cluster5  : k-means 5
-  * cluster6  : k-means 6
-  * cluster7  : k-means 7
-  * cluster8  : k-means 8
-  * cluster9  : k-means 9
-  * cluster10 : k-means 10
-  * cluster11 : k-means 11
+I've included the following output directories:
+  cluster3  ($ ./analysis em 3)
+  cluster4  ($ ./analysis k-means 4)
+  cluster5  ($ ./analysis k-means 5)
+  cluster6  ($ ./analysis k-means 6)
+  cluster7  ($ ./analysis k-means 7)
+  cluster8  ($ ./analysis k-means 8)
+  cluster9  ($ ./analysis k-means 9)
+  cluster10 ($ ./analysis k-means 10)
+  cluster11 ($ ./analysis k-means 11)
+
 -------------------------------------------------------------------------------
 Files generated:
+-------------------------------------------------------------------------------
 
-* gnu/[ld|hd]/plot
-  ----------------
+gnu/[ld|hd]/plot
+----------------
   * plots for LD TMU metrics: Water Temp Delta & Manifold Press
   * plots for LD & HD Power Unit Metric: Power kWh
-  * plots for LD & HD Chiller Metrics: 
+  * plots for LD & HD Chiller Metrics: COP, C_WTD, CH_WTD, Loads, KW
 
-- cluster/[ld|hd]/[metric]
-  ------------------------
-  - Chiller Metrics
+cluster/[ld|hd]/[metric]
+------------------------
+  * Chiller Metrics
     - COP (coefficient of performance)
     - C_WTD (condenser water temp delta)
     - CH_WTD (chilled water temp delta)
     - Loads 
     - KW (cooling load)
-  - ELKI files: <alg> clustering with <k> for all Chiller metrics (across all 3 trials)
-  - sorted trial files (t01.dat--t03.dat): SEC K
-  - plots with cluster overlays based on the sorted trial files
+  * ELKI files: <alg> clustering with <k> for all Chiller metrics 
+    (across all 3 trials)
+  * sorted trial files (t01.dat--t03.dat)
+  * motifs: plots with cluster overlays based on time-sorted trial files
 
-~ table/[ld|hd]
-  -------------
-  ~ LaTeX tables for node average metrics
+table/[ld|hd]
+-------------
+  * LaTeX tables for node average metrics
+
+Note: * latex.hs and htlatex.hs are simply scripts to organize all the png 
+        files into a coherent report
+      * {index.tex,index.bib,indexintro.tex} -> index.html
+      * to generate HTML via LaTeX:
+        $ htlatex index.tex "html,3,next"
